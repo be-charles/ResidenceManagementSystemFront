@@ -51,7 +51,7 @@ const FetchResidences = () => {
                 <TableBody>
                     {/* Iterate through each residence and create a row for it */}
                     {residences.map((residence) => (
-                        <TableRow key={residence.residenceName}>
+                        <TableRow key={residence.residenceId}>
                             <TableCell align="left">{residence.residenceId}</TableCell>
                             <TableCell align="right">{residence.residenceName}</TableCell>
                             <TableCell align="right">{residence.roomsAvailable}</TableCell>

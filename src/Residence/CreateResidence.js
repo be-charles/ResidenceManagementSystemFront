@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Button, Container, CssBaseline, TextField, Typography, makeStyles } from '@material-ui/core';
+import { Button, Container, TextField, Typography, makeStyles } from '@material-ui/core';
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 
@@ -19,7 +19,6 @@ const Create = () => {
     //Formatted response
     return (
         <Container component="main" maxWidth="xs">
-            <CssBaseline />
             <Typography component="h1" variant="h5">
                 Create Residence
           </Typography>
