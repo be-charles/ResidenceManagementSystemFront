@@ -73,9 +73,9 @@ function Residences() {
             <h2>Residences</h2>
             {/* Include the output from the fetch residences component we made above */}
             <FetchResidences />
-            <h2>Links</h2>
-            <Link to="/create">
-                <Button>Create</Button>
+            <h2>Related</h2>
+            <Link href="/residence/create">
+                <Button>Create Residence</Button>
             </Link>
             
         </>

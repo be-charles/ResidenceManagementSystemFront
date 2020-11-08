@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Button, Container, CssBaseline, TextField, Typography, makeStyles } from '@material-ui/core';
 import { useForm } from "react-hook-form";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles({
     form: {},
@@ -11,9 +12,10 @@ const useStyles = makeStyles({
 
 //Create Component
 const Create = () => {
+    const history = useHistory();
     const classes = useStyles();
     const { register, handleSubmit } = useForm();
-
+    
     //Formatted response
     return (
         <Container component="main" maxWidth="xs">
@@ -26,6 +28,9 @@ const Create = () => {
                     axios.post("http://localhost:8080/residence/create", data)
                         .then((response) => {
                             console.log(response);
+                            //Redirect to another page or do something else here to indicate the request was successful
+                            // such as creating a diolg box
+                            history.push("/");
                         })
                         .catch((error) => {
                             console.log(error);
@@ -70,6 +75,10 @@ function CreateResidence() {
     //The following response gets displayed
     return (
         <>
+            <h1>About This Page</h1>
+            <p>This page contains a form which posts data to our backend API that creates new residence entries</p>
+            <p>This page was created to showcase sending data to our API and should not be included in the final project 3 presentation</p>
+           
             {/* Include the output from the component we made above(Create) */}
             <Create />
         </>

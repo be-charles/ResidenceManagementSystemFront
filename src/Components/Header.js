@@ -36,7 +36,7 @@ const Header = () => {
         <AppBar position="static">
             <Toolbar>
                 <Container className={classes.conatinerSpacing}>
-                    <Button className={classes.headerText}>Res Mana Demo</Button>
+                    <Button className={classes.headerText}>Res Frontend Proposal</Button>
                     <IconButton>
                         {/* Put Logo Here AND REMOVE BUTTON ABOVE */}
                     </IconButton>
