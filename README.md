@@ -1,11 +1,10 @@
 # Frontend for Residence Management System Springboot API
-Requires NodeJS
+### Requires NodeJS
 
 ### Install: Fork/Download repository and run 'npm i' through your terminal while in the projects root directory
 ### Run: Run 'npm start' through your terminal while in the projects root directory
 
-## This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-## For react related information see below
+# This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). For react related information see below
 
 # Getting Started with Create React App
 ## Available Scripts
