@@ -3,7 +3,8 @@ Requires NodeJS
 
 Install: Fork/Download repository and run npm i in the projects root directory
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## For react related information see below
 
 # Getting Started with Create React App
 ## Available Scripts
