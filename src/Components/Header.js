@@ -5,18 +5,22 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
+    headerText: {
+        color: 'cyan',
+        fontSize: 26
+    },
     conatinerSpacing: {
-        display: `flex`,
-        justifyContent: `space-between`
+        display: 'flex',
+        justifyContent: 'space-between'
     },
     navSpacing: {
-        display: `flex`,
-        justifyContent: `space-between`
+        display: 'flex',
+        justifyContent: 'space-between'
     },
     linkText: {
-        color: `white`,
-        textDecoration: `none`,
-        textTransform: `uppercase`
+        color: 'white',
+        textDecoration: 'none',
+        textTransform: 'uppercase'
     }
 });
 
@@ -32,7 +36,7 @@ const Header = () => {
         <AppBar position="static">
             <Toolbar>
                 <Container className={classes.conatinerSpacing}>
-                    <Button>Res Mana Demo</Button>
+                    <Button className={classes.headerText}>Res Mana Demo</Button>
                     <IconButton>
                         {/* Put Logo Here AND REMOVE BUTTON ABOVE */}
                     </IconButton>

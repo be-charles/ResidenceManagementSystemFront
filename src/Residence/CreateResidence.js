@@ -70,7 +70,7 @@ function CreateResidence() {
     //The following response gets displayed
     return (
         <>
-            {/* Include the output from the component we made above(CreateResidence) */}
+            {/* Include the output from the component we made above(Create) */}
             <Create />
         </>
     );

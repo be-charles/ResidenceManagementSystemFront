@@ -16,15 +16,20 @@ const useStyles = makeStyles({
 
 //READ Component - Interact with backend
 const FetchResidences = () => {
+    //Declaring a state variable that has its default value set to an empty array '[]'
+    //The variable will be filled with an array of residence objects once we get a response from our GET call to our backend
+    //See https://reactjs.org/docs/hooks-state.html for more information regarding states and hooks in react if I am unable to help you understand
     const [residences, setResidences] = useState([]);
+    
     const fetchResidences = () => {
         //Create a GET call to backend
         axios.get("http://localhost:8080/residence/all").then(response => {
             console.log(response);
-            //Let residences = response.data
+            //Let residences = response.data (our array of residence objects)
             setResidences(response.data);
         })
     }
+
     //On Render call above fetch residences function to get residences from back end and store the response in 'residences'
     useEffect(() => {
         fetchResidences();
@@ -38,18 +43,18 @@ const FetchResidences = () => {
             <Table className={classes.table} aria-label="residences table">
                 <TableHead>
                     <TableRow>
-                        <TableCell align="right">ID</TableCell>
-                        <TableCell align="right">Rooms Available</TableCell>
+                        <TableCell align="left">ID</TableCell>
                         <TableCell align="right">Name</TableCell>
+                        <TableCell align="right">Rooms Available</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     {/* Iterate through each residence and create a row for it */}
                     {residences.map((residence) => (
                         <TableRow key={residence.residenceName}>
-                            <TableCell align="right">{residence.residenceId}</TableCell>
-                            <TableCell align="right">{residence.roomsAvailable}</TableCell>
+                            <TableCell align="left">{residence.residenceId}</TableCell>
                             <TableCell align="right">{residence.residenceName}</TableCell>
+                            <TableCell align="right">{residence.roomsAvailable}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
@@ -64,6 +69,7 @@ function Residences() {
         <>
             <h1>About This Page</h1>
             <p>This page contains a list of all residences retrieved from the springboot backend</p>
+            <p>This page was created to showcase retrieving data from an API and should not be included in the final project 3 presentation</p>
             <h2>Residences</h2>
             {/* Include the output from the fetch residences component we made above */}
             <FetchResidences />
