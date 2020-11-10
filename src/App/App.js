@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 import Header from '../Components/Header';
@@ -8,38 +8,25 @@ import Residences from '../Residence/ReadResidences';
 import CreateResidence from '../Residence/CreateResidence';
 import Students from '../Students';
 import Login from '../Auth/Login';
+import NewPage from '../NewPage';
 import axios from 'axios';
+import Logout from '../Auth/Logout';
+
 
 function App() {
-  const [loginStatus, setLoginStatus] = useState('CHECKING');
-
-  const checkLoginStatus = () => {
-    axios.get("http://localhost:8080", { withCredentials: true })
-      .then(response => {
-        console.log("RESPONSE: " + response);
-        if (response.status == 200) setLoginStatus('LOGGED_IN');
-        else setLoginStatus('LOGGED_OUT');
-      })
-      .catch(error => {
-        if (error.response.status == 401) {
-          setLoginStatus('LOGGED_OUT');
-        } else console.log("CHECKING LOGIN STATUS ERROR: " + error);
-      })
-  }
-
-  useEffect(() => { checkLoginStatus(); });
-
   return (
     <Router>
       <div className="App">
         <Header />
         <Switch>
-          <Route path="/" exact render={props => (<Home {...props} loginStatus={loginStatus} />)} />
-          <Route path="/login" exact render={props => (<Login {...props} />)} />
-          <Route path="/students" exact render={props => (<Students {...props} loginStatus={loginStatus} />)} />
-          <Route path="/apply" exact render={props => (<Apply {...props} loginStatus={loginStatus} />)} />
-          <Route path="/residence" exact render={props => (<Residences {...props} loginStatus={loginStatus} />)} />
-          <Route path="/residence/create" exact render={props => (<CreateResidence {...props} loginStatus={loginStatus} />)} />
+          <Route path="/" exact render={props => (<Home  />)} />
+          <Route path="/logout" exact render={props => (<Logout />)} />
+          <Route path="/newpage" exact render={props => (<NewPage  />)} />
+          <Route path="/login" exact render={props => (<Login  />)} />
+          <Route path="/students" exact render={props => (<Students  />)} />
+          <Route path="/apply" exact render={props => (<Apply  />)} />
+          <Route path="/residence" exact render={props => (<Residences  />)} />
+          <Route path="/residence/create" exact render={props => (<CreateResidence  />)} />
         </Switch>
       </div>
     </Router>

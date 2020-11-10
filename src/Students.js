@@ -23,10 +23,12 @@ function Students() {
 
     const fetchStudents = () => {
         //Create a GET call to backend
-        axios.get("http://localhost:8080/student/all").then(response => {
+        axios.get("http://localhost:8080/student/all", { withCredentials: true }).then(response => {
             console.log(response);
             //Let residences = response.data (our array of residence objects)
             setStudents(response.data);
+        }).catch(error => {
+            console.log(error);
         })
     }
 
@@ -41,38 +43,38 @@ function Students() {
 
     return (
         <>
-       <h1>Students</h1>
-       <TableContainer className={classes.tableContainer} component={Paper}>
-            <Table className={classes.table} aria-label="residences table">
-                <TableHead>
-                    <TableRow>
-                        <TableCell align="left">Student Number</TableCell>
-                        <TableCell align="right">First Name</TableCell>
-                        <TableCell align="right">Last Name Available</TableCell>
-                        <TableCell align="right">Campus ID</TableCell>
-                        <TableCell align="right">Identity Number</TableCell>
-                        <TableCell align="right">Student Email</TableCell>
-                        <TableCell align="right">Contact Number</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {/* Iterate through each residence and create a row for it */}
-                    {students.map((student) => (
-                        <TableRow key={student.residenceId}>
-                            <TableCell align="left">{student.studNum}</TableCell>
-                            <TableCell align="right">{student.firstName}</TableCell>
-                            <TableCell align="right">{student.lastName}</TableCell>
-                            <TableCell align="right">{student.campus}</TableCell>
-                            <TableCell align="right">{student.identityNum}</TableCell>
-                            <TableCell align="right">{student.studEmail}</TableCell>
-                            <TableCell align="right">{student.contactNum}</TableCell>
+            <h1>Students</h1>
+            <TableContainer className={classes.tableContainer} component={Paper}>
+                <Table className={classes.table} aria-label="residences table">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell align="left">Student Number</TableCell>
+                            <TableCell align="right">First Name</TableCell>
+                            <TableCell align="right">Last Name Available</TableCell>
+                            <TableCell align="right">Campus ID</TableCell>
+                            <TableCell align="right">Identity Number</TableCell>
+                            <TableCell align="right">Student Email</TableCell>
+                            <TableCell align="right">Contact Number</TableCell>
                         </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
-        </TableContainer>
+                    </TableHead>
+                    <TableBody>
+                        {/* Iterate through each residence and create a row for it */}
+                        {students.map((student) => (
+                            <TableRow key={student.residenceId}>
+                                <TableCell align="left">{student.studNum}</TableCell>
+                                <TableCell align="right">{student.firstName}</TableCell>
+                                <TableCell align="right">{student.lastName}</TableCell>
+                                <TableCell align="right">{student.campus}</TableCell>
+                                <TableCell align="right">{student.identityNum}</TableCell>
+                                <TableCell align="right">{student.studEmail}</TableCell>
+                                <TableCell align="right">{student.contactNum}</TableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
         </>
     );
- };
- 
- export default Students;
+};
+
+export default Students;

@@ -11,10 +11,6 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
   },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
   form: {
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(1),
@@ -24,13 +20,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Login({ loginStatus }) {
-  if (loginStatus == 'LOGGED_IN') { return (<Redirect to="/" />) }
+function Login() {
+
   const history = useHistory();
   const classes = useStyles();
+
   const { register, handleSubmit } = useForm();
+
   const onSubmit = data => {
-    axios.get("http://localhost:8080", { auth: data }, { withCredentials: true })
+    axios.get("http://localhost:8080", { auth: data })
       .then(response => {
         console.log(response)
         if (response.status == 200) {
