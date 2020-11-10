@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Container, makeStyles, Paper, Typography } from "@material-ui/core";
-import { Redirect, useHistory } from "react-router-dom";
+import { Container, makeStyles, Typography } from "@material-ui/core";
 
 //This page requires the student to be logged in
 const ApplicationProgress = () => {
@@ -30,10 +29,6 @@ const ApplicationProgress = () => {
 }
 
 const SubmitApplication = () => {
-   const useStyles = makeStyles({
-
-   });
-   const classes = useStyles();
    return (
       <Container >
          <Typography>Submit Application</Typography>
@@ -42,10 +37,6 @@ const SubmitApplication = () => {
 }
 
 const ResubmitApplication = () => {
-   const useStyles = makeStyles({
-
-   });
-   const classes = useStyles();
    return (
       <Container>
          <Typography>Resubmit Application</Typography>
@@ -54,10 +45,6 @@ const ResubmitApplication = () => {
 }
 
 const CancelApplication = () => {
-   const useStyles = makeStyles({
-
-   });
-   const classes = useStyles();
    return (
       <Container>
          <Typography>Cancel Application</Typography>
@@ -66,8 +53,6 @@ const CancelApplication = () => {
 }
 
 function Apply() {
-   const history = useHistory();
-
    const [applicationData, setApplicationData] = useState();
 
    const getApplication = () => {

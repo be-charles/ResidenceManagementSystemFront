@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import axios from 'axios';
 import { useForm } from "react-hook-form";
 import { Button, Checkbox, Container, FormControlLabel, TextField, Typography, makeStyles } from '@material-ui/core';
-import { Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -31,7 +31,7 @@ function Login() {
     axios.get("http://localhost:8080", { auth: data })
       .then(response => {
         console.log(response)
-        if (response.status == 200) {
+        if (response.status === 200) {
           console.log("LOGGED IN")
           history.push('/');
         }
