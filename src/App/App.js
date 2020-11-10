@@ -8,10 +8,9 @@ import Residences from '../Residence/ReadResidences';
 import CreateResidence from '../Residence/CreateResidence';
 import Students from '../Students';
 import Login from '../Auth/Login';
-import NewPage from '../NewPage';
-import axios from 'axios';
 import Logout from '../Auth/Logout';
-
+import ExamplePage from '../ExamplePage';
+import ExamplePage2 from'../ExamplePage2';
 
 function App() {
   return (
@@ -20,8 +19,9 @@ function App() {
         <Header />
         <Switch>
           <Route path="/" exact render={props => (<Home  />)} />
+          <Route path="/examplepage2" exact render={props => (<ExamplePage2  />)} />
+          <Route path="/examplepage" exact render={props => (<ExamplePage  />)} />
           <Route path="/logout" exact render={props => (<Logout />)} />
-          <Route path="/newpage" exact render={props => (<NewPage  />)} />
           <Route path="/login" exact render={props => (<Login  />)} />
           <Route path="/students" exact render={props => (<Students  />)} />
           <Route path="/apply" exact render={props => (<Apply  />)} />

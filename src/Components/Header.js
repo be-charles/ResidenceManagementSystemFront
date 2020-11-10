@@ -29,7 +29,7 @@ const links = [
     { title: `apply`, path: `/apply` },
     { title: `residences`, path: `/residence` },
     { title: `students`, path: `/students`},
-    { title: `new page`, path: `/newpage`},
+    { title: `example page`, path: `/examplepage` },
 ];
 
 const Header = () => {
