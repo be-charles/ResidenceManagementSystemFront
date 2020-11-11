@@ -3,12 +3,9 @@ import { AppBar, Button, Container, IconButton, Toolbar } from '@material-ui/cor
 import { List, ListItem, ListItemText } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
+import myResLogo from '../ImageFiles/myRES_logo_small.png'
 
 const useStyles = makeStyles({
-    headerText: {
-        color: 'cyan',
-        fontSize: 26
-    },
     conatinerSpacing: {
         display: 'flex',
         justifyContent: 'space-between'
@@ -21,12 +18,16 @@ const useStyles = makeStyles({
         color: 'white',
         textDecoration: 'none',
         textTransform: 'uppercase'
+    },
+    navColour: {
+        background: 'white'
     }
 });
 
 const links = [
     { title: `home`, path: `/` },
     { title: `apply`, path: `/apply` },
+    { title: `myProfile`, path: `/myprofile` },
     { title: `residences`, path: `/residence` },
     { title: `students`, path: `/students`},
     { title: `example page`, path: `/examplepage` },
@@ -34,15 +35,28 @@ const links = [
     { title: `log query`, path: `/logquery` },
     { title: `house rules`, path: `/houserules` },
 ];
-
+const Header2 = () => {
+    const classes = useStyles();
+    return (
+        <AppBar position="static">
+            <Toolbar className={classes.navColour}>
+                <Container className={classes.conatinerSpacing}>
+                    <IconButton edge="Start" className={classes.menuButton} color="inherit" aria-label="menu">
+                        <img src={myResLogo} alt="Web Logo"/>
+                        {/* Put Logo Here AND REMOVE BUTTON ABOVE */}
+                    </IconButton>
+                </Container>
+            </Toolbar>
+        </AppBar>
+    )
+}
 const Header = () => {
     const classes = useStyles();
     return (
         <AppBar position="static">
             <Toolbar>
                 <Container className={classes.conatinerSpacing}>
-                    <Button className={classes.headerText}>Res Frontend Proposal</Button>
-                    <IconButton>
+                    <IconButton edge="Start" className={classes.menuButton} color="inherit" aria-label="menu">
                         {/* Put Logo Here AND REMOVE BUTTON ABOVE */}
                     </IconButton>
                     <List component="nav" aria-labelledby="main navigation" className={classes.navSpacing}>
@@ -60,4 +74,16 @@ const Header = () => {
         </AppBar>
     )
 }
-export default Header
+
+function DisplayHeaders(){
+    let components;
+
+    components = (
+    <>
+        <Header2/>
+        <Header/>
+    </>);
+
+    return components;
+}
+export default DisplayHeaders
