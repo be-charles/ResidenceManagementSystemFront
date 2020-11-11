@@ -31,7 +31,8 @@ const links = [
     { title: `students`, path: `/students`},
     { title: `example page`, path: `/examplepage` },
     { title: `StaffQuery`, path: `/StaffQuery` },
-    
+    { title: `log query`, path: `/logquery` },
+    { title: `house rules`, path: `/houserules` },
 ];
 
 const Header = () => {
