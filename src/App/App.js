@@ -11,6 +11,7 @@ import Login from '../Auth/Login';
 import Logout from '../Auth/Logout';
 import ExamplePage from '../ExamplePage';
 import ExamplePage2 from'../ExamplePage2';
+import StaffQuery from'../StaffQuery';
 import LogQuery from '../LogQuery';
 import HouseRules from '../HouseRules';
 
