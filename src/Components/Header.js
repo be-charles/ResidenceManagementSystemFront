@@ -27,7 +27,11 @@ const useStyles = makeStyles({
 const links = [
     { title: `home`, path: `/` },
     { title: `apply`, path: `/apply` },
-    { title: `residences`, path: `/residence` }
+    { title: `residences`, path: `/residence` },
+    { title: `students`, path: `/students`},
+    { title: `example page`, path: `/examplepage` },
+    { title: `log query`, path: `/logquery` },
+    { title: `house rules`, path: `/houserules` },
 ];
 
 const Header = () => {

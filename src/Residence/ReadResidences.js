@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -20,14 +21,18 @@ const FetchResidences = () => {
     //The variable will be filled with an array of residence objects once we get a response from our GET call to our backend
     //See https://reactjs.org/docs/hooks-state.html for more information regarding states and hooks in react if I am unable to help you understand
     const [residences, setResidences] = useState([]);
-    
+
     const fetchResidences = () => {
         //Create a GET call to backend
-        axios.get("http://localhost:8080/residence/all").then(response => {
-            console.log(response);
-            //Let residences = response.data (our array of residence objects)
-            setResidences(response.data);
-        })
+        axios.get("http://localhost:8080/residence/all", {withCredentials:true, })
+            .then(response => {
+                console.log(response);
+                //Let residences = response.data (our array of residence objects)
+                setResidences(response.data);
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
 
     //On Render call above fetch residences function to get residences from back end and store the response in 'residences'
@@ -62,7 +67,7 @@ const FetchResidences = () => {
         </TableContainer>);
 };
 
-//MAIN PAGE
+//MAIN COMPONENT
 function Residences() {
     //The following response gets displayed
     return (
@@ -77,7 +82,7 @@ function Residences() {
             <Link href="/residence/create">
                 <Button>Create Residence</Button>
             </Link>
-            
+
         </>
     );
 }
