@@ -12,33 +12,32 @@ const useStyles = makeStyles({
 
 //Create Component
 const Create = () => {
-    const history = useHistory();
-    const classes = useStyles();
-    const { register, handleSubmit } = useForm();
-    
+    const history = useHistory();   //We'll use history later to redirect to another page
+    const classes = useStyles();    //This variable contains all our css classes
+    const { register, handleSubmit } = useForm();   //Form validation
+    const onSubmit = data => {
+        axios.post("http://localhost:8080/residence/create", data)
+        .then((response) => {
+            console.log(response);
+            //Redirect to another page or do something else here to indicate the request was successful
+            //such as creating a diolg box
+            history.push("/");
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+    }
+
     //Formatted response
     return (
         <Container component="main" maxWidth="xs">
             <Typography component="h1" variant="h5">
                 Create Residence
           </Typography>
-            <form className={classes.form} noValidate onSubmit={
-                handleSubmit((data) => {
-                    axios.post("http://localhost:8080/residence/create", data)
-                        .then((response) => {
-                            console.log(response);
-                            //Redirect to another page or do something else here to indicate the request was successful
-                            // such as creating a diolg box
-                            history.push("/");
-                        })
-                        .catch((error) => {
-                            console.log(error);
-                        });
-                })
-            }>
+            <form className={classes.form} noValidate onSubmit={handleSubmit(onSubmit)} >
                 <TextField
                     margin="normal"
-                    inputRef={register}
+                    inputRef={register} //EACH INPUT FIELD THAT 
                     required
                     fullWidth
                     id="residenceName"
@@ -77,7 +76,7 @@ function CreateResidence() {
             <h1>About This Page</h1>
             <p>This page contains a form which posts data to our backend API that creates new residence entries</p>
             <p>This page was created to showcase sending data to our API and should not be included in the final project 3 presentation</p>
-           
+
             {/* Include the output from the component we made above(Create) */}
             <Create />
         </>
