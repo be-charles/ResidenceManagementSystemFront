@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
-import { Button, Container, makeStyles, Typography, Paper, Table, TableHead, TableBody, TableCell, TableRow, Divider, Grid, useIsFocusVisible } from "@material-ui/core";
+import { Button, Container, makeStyles, Typography, Paper, Table, TableHead, TableBody, TableCell, TableRow, Divider, Grid } from "@material-ui/core";
 import { useDropzone } from 'react-dropzone';
 
 const ApplicationStatus = () => {
