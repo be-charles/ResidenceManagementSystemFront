@@ -29,6 +29,7 @@ function App() {
           <Route path="/students" exact render={props => (<Students  />)} />
           <Route path="/apply" exact render={props => (<Apply  />)} />
           <Route path="/residence" exact render={props => (<Residences  />)} />
+          <Route path="/StaffQuery" exact render={props => (<StaffQuery  />)} />
           <Route path="/residence/create" exact render={props => (<CreateResidence  />)} />
           <Route path="/logquery" exact render={props => (<LogQuery  />)} />
           <Route path="/houserules" exact render={props => (<HouseRules  />)} />
