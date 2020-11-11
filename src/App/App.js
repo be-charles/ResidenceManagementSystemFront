@@ -4,6 +4,7 @@ import './App.css';
 import Header from '../Components/Header';
 import Home from '../Home';
 import Apply from '../Apply';
+import MyProfile from '../MyProfile/MyProfile';
 import Residences from '../Residence/ReadResidences';
 import CreateResidence from '../Residence/CreateResidence';
 import Students from '../Students';
@@ -27,6 +28,7 @@ function App() {
           <Route path="/login" exact render={props => (<Login  />)} />
           <Route path="/students" exact render={props => (<Students  />)} />
           <Route path="/apply" exact render={props => (<Apply  />)} />
+          <Route path="/myprofile" exact render={props => (<MyProfile  />)} />
           <Route path="/residence" exact render={props => (<Residences  />)} />
           <Route path="/residence/create" exact render={props => (<CreateResidence  />)} />
           <Route path="/logquery" exact render={props => (<LogQuery  />)} />
