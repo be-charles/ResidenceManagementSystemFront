@@ -71,6 +71,7 @@ const ApplicationStatus = () => {
    );
 }
 
+
 const SubmitApplication = () => {
    //DROPZONE
    const onDrop = useCallback(acceptedFiles => {
@@ -254,7 +255,7 @@ const CancelApplication = () => {
    }));
    const classes = useStyles();
    return (
-      <Container >
+      <Container className={classes.container} >
          <Paper className={classes.paper} elevation={3}>
             <Typography className={classes.title}>Cancel Application</Typography>
             <Typography>Click below to cancel your application. You will still be able to re-apply at a later date</Typography>
