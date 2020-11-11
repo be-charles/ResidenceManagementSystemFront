@@ -11,6 +11,8 @@ import Login from '../Auth/Login';
 import Logout from '../Auth/Logout';
 import ExamplePage from '../ExamplePage';
 import ExamplePage2 from'../ExamplePage2';
+import LogQuery from '../LogQuery';
+import HouseRules from '../HouseRules';
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
           <Route path="/apply" exact render={props => (<Apply  />)} />
           <Route path="/residence" exact render={props => (<Residences  />)} />
           <Route path="/residence/create" exact render={props => (<CreateResidence  />)} />
+          <Route path="/logquery" exact render={props => (<LogQuery  />)} />
+          <Route path="/houserules" exact render={props => (<HouseRules  />)} />
         </Switch>
       </div>
     </Router>
