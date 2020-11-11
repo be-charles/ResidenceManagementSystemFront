@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function Home() {
+function ExamplePage2() {
    return (
       <>
       <h1>Home</h1>
@@ -10,4 +10,4 @@ function Home() {
    );
 }
 
-export default Home;
+export default ExamplePage2;
