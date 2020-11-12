@@ -13,7 +13,6 @@ import Logout from '../Auth/Logout';
 import ExamplePage from '../ExamplePage';
 import MyResidence from'../MyResidence';
 import StaffQuery from'../StaffQuery';
-import ExamplePage2 from '../ExamplePage2';
 import LogQuery from '../LogQuery';
 import HouseRules from '../HouseRules';
 
@@ -37,7 +36,6 @@ function App() {
             
           {/* Example pages REMOVE WHEN PROJECT IS COMPLETE */}
           <Route path="/examplepage" exact render={props => (<ExamplePage />)} />
-          <Route path="/examplepage2" exact render={props => (<ExamplePage2 />)} />
           <Route path="/students" exact render={props => (<Students />)} />
           <Route path="/residence" exact render={props => (<Residences />)} />
           <Route path="/residence/create" exact render={props => (<CreateResidence />)} />
