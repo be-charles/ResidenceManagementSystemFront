@@ -31,6 +31,7 @@ const links = [
     { title: `StaffQuery`, path: `/StaffQuery` },
     { title: `log query`, path: `/logquery` },
     { title: `house rules`, path: `/houserules` },
+    { title: `MyResidence`, path: `/MyResidence` },
 ];
 const Header2 = () => {
     const classes = useStyles();
