@@ -140,7 +140,7 @@ function StaffQuery() {
         </List>
       </Collapse>
     </List>
-<br></br><br></br>
+<br></br><br></br><br></br><br></br>
 List of Approved Students
     <div className={classes.root}>
       <Tabs
