@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import { useForm } from "react-hook-form";
-import { Button, Checkbox, Container, FormControlLabel, TextField, Typography, makeStyles } from '@material-ui/core';
-import { useHistory } from "react-router-dom";
+import { Button, Container,  TextField, Typography, makeStyles } from '@material-ui/core';
+import { withRouter } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -21,8 +21,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Login() {
-
-  const history = useHistory();
   const classes = useStyles();
 
   const { register, handleSubmit } = useForm();
@@ -32,8 +30,7 @@ function Login() {
       .then(response => {
         console.log(response)
         if (response.status === 200) {
-          console.log("LOGGED IN")
-          history.push('/');
+          window.location.href="/"
         }
       }
       ).catch(error => {
@@ -72,10 +69,6 @@ function Login() {
             inputRef={register}
             autoComplete="current-password"
           />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-          />
           <Button
             type="submit"
             fullWidth
@@ -85,22 +78,10 @@ function Login() {
           >
             Login
            </Button>
-          {/* <Grid container>
-             <Grid item xs>
-               <Link href="#" variant="body2">
-                 Forgot password?
-               </Link>
-             </Grid>
-             <Grid item>
-               <Link href="#" variant="body2">
-                 {"Don't have an account? Sign Up"}
-               </Link>
-             </Grid>
-           </Grid> */}
         </form>
       </div>
     </Container>
   );
 }
 
-export default Login;
+export default withRouter(Login);
