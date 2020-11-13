@@ -1,6 +1,5 @@
-import React, { useEffect }  from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
-import { Redirect } from 'react-router-dom';
 
 function Logout() {
    const logout = () => {
@@ -14,7 +13,7 @@ function Logout() {
 
    useEffect(() => { logout(); }, []);
    return (
-      <Redirect to="/" />
+      window.location.href="/"
    );
 }
 
