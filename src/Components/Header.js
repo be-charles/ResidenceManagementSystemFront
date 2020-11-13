@@ -133,7 +133,7 @@ const StaffNavigation = () => {
 }
 function DisplayHeaders({ loginInfo }) {
 
-    if (loginInfo.role === "student") { return <> <Banner /> <StudentNavigation /> </> }
+    if (loginInfo.role === "student") { return <> <Banner /> <StudentNavigation />  </> }
     else if (loginInfo.role === "admin") { return <> <Banner /> <StaffNavigation />  </> }
     return <> <Banner /> <DefaultNavigation /> </>
 }
