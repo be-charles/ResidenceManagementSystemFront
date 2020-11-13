@@ -82,7 +82,7 @@ function ProfileInfo () {
                         <TableCell>Contact Number</TableCell><TableCell align="left">{profileData.contactNum}</TableCell>
                      </TableRow>
                      <TableRow>
-                        <TableCell>Active Residence</TableCell><TableCell align="left">President House (Southpoint)</TableCell>
+                        <TableCell>Active Residence</TableCell><TableCell align="left">if({profileData.campusId}==1) {"CPUT"}</TableCell>
                      </TableRow>
                   </TableBody>
                </Table>
@@ -105,6 +105,7 @@ function AccountInfo () {
       },
       paper: {
          marginTop: theme.spacing(4),
+         marginBottom: theme.spacing(4),
          padding: theme.spacing(2),
          display: 'flex',
          overflow: 'hidden',
@@ -133,9 +134,9 @@ function AccountInfo () {
    return (
       <Container>
          <Paper className={classes.paper} elevation={3}>
-            <Typography className={classes.title}>MyAccount</Typography>
+            <Typography className={classes.title}  >MyAccount</Typography>
             <Divider />
-            <Paper className={classes.paper}>
+            <Paper className={classes.paper} >
                <Table >
                   <TableHead>
                      <TableCell>Account Information</TableCell>
