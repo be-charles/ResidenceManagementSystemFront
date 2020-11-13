@@ -55,14 +55,14 @@ function MyResidence() {
       <CssBaseline />
         
       <Container maxWidth="sm">         
-        <Typography  component="div"   style={{ backgroundColor: '#cfe8fc', height: '50vh', weight: '1000' }} h1 >Login to myResidence Profile
+        <Typography  component="div"   style={{ backgroundColor: '#cfe8fc', height: '50vh', weight: '1000' }} > <h2>Login to myResidence Profile</h2>
          
         <Paper >
                <Table>
                   <TableHead>
-                     <TableCell>Student</TableCell>
-                     <TableCell>OR</TableCell>
-                     <TableCell>Residence Coordinator</TableCell>
+                     <TableCell><h3>Student</h3></TableCell>
+                     <TableCell><h3>OR</h3></TableCell>
+                     <TableCell><h3>Residence Coordinator</h3></TableCell>
                   </TableHead>
                   <TableBody>
                   <TableRow>
