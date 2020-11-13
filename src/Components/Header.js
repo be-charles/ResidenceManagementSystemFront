@@ -43,6 +43,7 @@ const staffNavigationLinks = [
     { title: `StaffQuery`, path: `/StaffQuery` },
     { title: `logout`, path: `/logout`}
 ];
+
 const Banner = () => {
     const classes = useStyles();
     return (
@@ -132,8 +133,11 @@ const StaffNavigation = () => {
 }
 function DisplayHeaders({ loginInfo }) {
 
-    if (loginInfo.role === "student") { return <> <Banner /> <StudentNavigation />  </> }
+    if (loginInfo.role === "student") { return <> <Banner /> <StudentNavigation /> </> }
     else if (loginInfo.role === "admin") { return <> <Banner /> <StaffNavigation />  </> }
     return <> <Banner /> <DefaultNavigation /> </>
 }
+
+
+
 export default DisplayHeaders
