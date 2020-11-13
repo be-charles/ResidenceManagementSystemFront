@@ -39,11 +39,8 @@ const studentNavigationLinks = [
     { title: `myProfile`, path: `/myprofile` },
     { title: `log query`, path: `/logquery` },
     { title: `house rules`, path: `/houserules` },
-<<<<<<< HEAD
-=======
     { title: `MyResidence`, path: `/MyResidence` },
     { title: `logout`, path: `/logout`}
->>>>>>> 057cbd93a565975d38ddc84de810c75745803dfe
 ];
 const staffNavigationLinks = [
     { title: `home`, path: `/` },
