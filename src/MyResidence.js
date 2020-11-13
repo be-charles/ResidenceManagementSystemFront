@@ -113,7 +113,7 @@ function MyResidence() {
                                
                 </div>     </TableCell>
                         <TableCell></TableCell>
-                        <TableCell align="right"> <div>
+                        <TableCell align="right"> <div className={classes.form} onSubmit={handleSubmit(onSubmit)}>
                 <TextField
                     id="outlined-textarea"
                     label="Staff Username"

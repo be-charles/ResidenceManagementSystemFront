@@ -40,6 +40,7 @@ function Students() {
     }, []);
 
     const classes = useStyles();
+    
 
     return (
         <>
@@ -50,8 +51,8 @@ function Students() {
                         <TableRow>
                             <TableCell align="left">Student Number</TableCell>
                             <TableCell align="right">First Name</TableCell>
-                            <TableCell align="right">Last Name Available</TableCell>
-                            <TableCell align="right">Campus ID</TableCell>
+                            <TableCell align="right">Last Name</TableCell>
+                            <TableCell align="right">Campus</TableCell>
                             <TableCell align="right">Identity Number</TableCell>
                             <TableCell align="right">Student Email</TableCell>
                             <TableCell align="right">Contact Number</TableCell>
@@ -64,7 +65,7 @@ function Students() {
                                 <TableCell align="left">{student.studNum}</TableCell>
                                 <TableCell align="right">{student.firstName}</TableCell>
                                 <TableCell align="right">{student.lastName}</TableCell>
-                                <TableCell align="right">{student.campus}</TableCell>
+                                <TableCell align="right"></TableCell>
                                 <TableCell align="right">{student.identityNum}</TableCell>
                                 <TableCell align="right">{student.studEmail}</TableCell>
                                 <TableCell align="right">{student.contactNum}</TableCell>
