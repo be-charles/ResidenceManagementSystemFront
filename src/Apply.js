@@ -36,7 +36,11 @@ const ApplicationStatus = () => {
                      <TableCell>Reference Number</TableCell>
                      <TableCell>Status</TableCell>
                   </TableHead>
-                  <TableBody></TableBody>
+                  <TableBody>
+                     <TableCell>2020-11-08</TableCell>
+                     <TableCell>50dd9e79053a324e795a498e4909734220d9deb0d32637eb480437fb25e25faa</TableCell>
+                     <TableCell>PROCESSING</TableCell>
+                  </TableBody>
                </Table>
             </Paper>
             <Typography className={classes.title}>Application Progress</Typography>
@@ -49,7 +53,7 @@ const ApplicationStatus = () => {
                   <TableBody>
                      <TableRow>
                         <TableCell>1. Receive Application</TableCell>
-                        <TableCell align="right">PENDING</TableCell>
+                        <TableCell align="right">COMPLETE</TableCell>
                      </TableRow>
                      <TableRow>
                         <TableCell>2. Application Accepted </TableCell>
@@ -236,7 +240,7 @@ const CancelApplication = () => {
          height: 50,
          width: 200,
       },
-      container:{
+      container: {
          marginBottom: theme.spacing(10)
       },
       title: {

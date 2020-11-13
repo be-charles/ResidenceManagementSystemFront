@@ -28,11 +28,10 @@ const links = [
     { title: `home`, path: `/` },
     { title: `apply`, path: `/apply` },
     { title: `myProfile`, path: `/myprofile` },
-    { title: `residences`, path: `/residence` },
-    { title: `students`, path: `/students`},
-    { title: `example page`, path: `/examplepage` },
+    { title: `StaffQuery`, path: `/StaffQuery` },
     { title: `log query`, path: `/logquery` },
     { title: `house rules`, path: `/houserules` },
+    { title: `MyResidence`, path: `/MyResidence` },
 ];
 const Header2 = () => {
     const classes = useStyles();
