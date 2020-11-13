@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 //import Container from '@material-ui/core/Container';
-import { Button, Container, TextField, Typography, makeStyles } from '@material-ui/core';
+import { Button, Container, TextField, Typography, makeStyles, Paper } from '@material-ui/core';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
@@ -24,6 +24,14 @@ const useStyles = makeStyles((theme) => ({
         width: '25ch',
       },
     },
+    paper: {
+      marginTop: theme.spacing(4),
+      padding: theme.spacing(2),
+      display: 'flex',
+      overflow: 'hidden',
+      flexDirection: 'column',
+      minHeight: 200,
+    },
   }));
 
 function LogQuery() {
@@ -38,6 +46,8 @@ function LogQuery() {
   };
     return (
        <>
+       <Container>
+         <Paper elevation={3}>
        <h1>Log a Query</h1>
        <p>Please fill in the form to log a query</p>
        <p></p>
@@ -141,6 +151,8 @@ function LogQuery() {
                 > Submit </Button>
             
         </Container>
+        </Paper>
+       </Container>
        </>
     );
  }

@@ -9,35 +9,42 @@ import Divider from '@material-ui/core/Divider';
 import InboxIcon from '@material-ui/icons/Inbox';
 import DraftsIcon from '@material-ui/icons/Drafts';
 import TextField from '@material-ui/core/TextField';
+import { Container, Paper } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-      width: '100%',
-      maxWidth: 360,
-      backgroundColor: theme.palette.background.paper,
-    },
-    textField: {
-        marginLeft: theme.spacing(1),
-        marginRight: theme.spacing(1),
-        width: '25ch',
-       
-      },
-  }));
+  root: {
+    width: '100%',
+    maxWidth: 360,
+    backgroundColor: theme.palette.background.paper,
+  },
+  textField: {
+    margin: 'auto',
+  },
+  paper: {
+    marginTop: theme.spacing(4),
+    padding: theme.spacing(2),
+    display: 'flex',
+    overflow: 'hidden',
+    flexDirection: 'column',
+    minHeight: 200,
+  },
+}));
 
- 
+
 function StaffQuery() {
-    const classes = useStyles();
+  const classes = useStyles();
   const [selectedIndex, setSelectedIndex] = React.useState(1);
 
   const handleListItemClick = (event, index) => {
     setSelectedIndex(index);
   };
-      return (
-          <div>
-              <h1>Students Queries & Comments</h1>
-         
-        
-        <div className={classes.root}>
+  return (
+    <Container>
+      <Paper className={classes.paper} elevation={3}>
+      <h1>Student Queries & Comments</h1>
+
+
+      <div className={classes.root}>
         <List component="nav" aria-label="main mailbox folders">
           <ListItem
             button
@@ -77,25 +84,26 @@ function StaffQuery() {
             <ListItemText primary="Spam" />
           </ListItem>
         </List>
-<br></br><br></br>
+        <br></br><br></br>
         <div>
-        <TextField
-          align="right" 
-          id="standard-full-width"
-          label="Student Information"
-          style={{ margin: 15 }}
-          placeholder="Enter student number"
-          helperText="Display student information!"
-          fullWidth
-          margin="normal"
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
+          <TextField
+            align="right"
+            id="standard-full-width"
+            label="Student Information"
+            style={{ margin: 15 }}
+            placeholder="Enter student number"
+            helperText="Display student information!"
+            fullWidth
+            margin="normal"
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+        </div>
       </div>
-      </div>
-      </div>
-    );
+      </Paper>
+    </Container>
+  );
 }
 
 export default StaffQuery;
