@@ -16,6 +16,7 @@ import MyResidence from '../MyResidence';
 import StaffQuery from '../StaffQuery';
 import LogQuery from '../LogQuery';
 import HouseRules from '../HouseRules';
+import FAQ from '../FAQ';
 
 function App() {
   //LOGIN CHECK
@@ -46,6 +47,7 @@ function App() {
           <Route path="/" exact render={props => (<Home />)} />
           <Route path="/login" exact render={props => (<Login />)} />
           <Route path="/logout" exact render={props => (<Logout />)} />
+          <Route path="/faq"exact render={props => (<FAQ />)} />
 
           <Route path="/MyResidence" exact render={props => (<MyResidence />)} />
           <Route path="/apply" exact render={props => (<Apply />)} />
