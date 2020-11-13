@@ -151,16 +151,14 @@ List of Approved Students
         aria-label="Vertical tabs example"
         className={classes.tabs}
       >
-        <Tab label="Student#1" {...a11yProps(0)} />
-        <Tab label="Student#2" {...a11yProps(1)} />
-        <Tab label="Student#3" {...a11yProps(2)} />
-        <Tab label="Student#4" {...a11yProps(3)} />
+        <Tab label="Christ Kitenge Mbuyi" {...a11yProps(0)} />
+        <Tab label="Junaid Martin" {...a11yProps(1)} />
+        <Tab label="Phumelela Hoho" {...a11yProps(2)} />
+        <Tab label="Luzuko Tshaka4" {...a11yProps(3)} />
       </Tabs>
       <TabPanel value={value} index={0}>
-      
       </TabPanel>
       <TabPanel value={value} index={1}>
-       
       </TabPanel>
       <TabPanel value={value} index={2}>
       
