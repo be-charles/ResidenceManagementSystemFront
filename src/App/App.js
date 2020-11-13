@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 import Header from '../Components/Header';
@@ -11,17 +12,43 @@ import Students from '../Students';
 import Login from '../Auth/Login';
 import Logout from '../Auth/Logout';
 import ExamplePage from '../ExamplePage';
+<<<<<<< HEAD
 import ExamplePage2 from'../ExamplePage2';
 import StaffQuery from'../StaffQuery';
+=======
+import MyResidence from '../MyResidence';
+import StaffQuery from '../StaffQuery';
+>>>>>>> 057cbd93a565975d38ddc84de810c75745803dfe
 import LogQuery from '../LogQuery';
 import HouseRules from '../HouseRules';
 
 function App() {
+  //LOGIN CHECK
+  const [loginInfo, setLoginInfo] = useState({"loggedIn": "false", "role": "0"});
+
+  const loginCheck = () => {
+    console.log('LOGIN CHECK')
+    axios.get("http://localhost:8080", { withCredentials: true })
+      .then(response => {
+        if(response.status !== 401)
+        setLoginInfo({"loggedIn": "true", "role": response.data})
+      })
+      .catch(error => {
+       return setLoginInfo({"loggedIn": "false", "role": "0"})
+      })
+  }
+
+  useEffect(() => {
+    loginCheck();
+  }, []);
+
+  console.log(loginInfo);
   return (
     <Router>
       <div className="App">
-        <Header />
+        <Header loginInfo={loginInfo} />
         <Switch>
+<<<<<<< HEAD
           <Route path="/" exact render={props => (<Home  />)} />
           <Route path="/examplepage2" exact render={props => (<ExamplePage2  />)} />
           <Route path="/examplepage" exact render={props => (<ExamplePage  />)} />
@@ -34,6 +61,25 @@ function App() {
           <Route path="/residence/create" exact render={props => (<CreateResidence  />)} />
           <Route path="/logquery" exact render={props => (<LogQuery  />)} />
           <Route path="/houserules" exact render={props => (<HouseRules  />)} />
+=======
+          <Route path="/" exact render={props => (<Home />)} />
+          <Route path="/login" exact render={props => (<Login />)} />
+          <Route path="/logout" exact render={props => (<Logout />)} />
+
+          <Route path="/MyResidence" exact render={props => (<MyResidence />)} />
+          <Route path="/apply" exact render={props => (<Apply />)} />
+          <Route path="/StaffQuery" exact render={props => (<StaffQuery />)} />
+          <Route path="/logquery" exact render={props => (<LogQuery />)} />
+          <Route path="/houserules" exact render={props => (<HouseRules />)} />
+          <Route path="/myprofile" exact render={props => (<MyProfile />)} />
+
+          {/* Example pages REMOVE WHEN PROJECT IS COMPLETE */}
+          <Route path="/examplepage" exact render={props => (<ExamplePage />)} />
+          <Route path="/students" exact render={props => (<Students />)} />
+          <Route path="/residence" exact render={props => (<Residences />)} />
+          <Route path="/residence/create" exact render={props => (<CreateResidence />)} />
+
+>>>>>>> 057cbd93a565975d38ddc84de810c75745803dfe
         </Switch>
       </div>
     </Router>

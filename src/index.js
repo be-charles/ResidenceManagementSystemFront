@@ -7,12 +7,11 @@ import axios from 'axios';
 
 axios.defaults.withCredentials = true;
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-axios.interceptors.response.use(response => {
-  return response
-}, error => {
-  console.log(error.response);
-  if(error.response.status === 401){
-    return window.location.href = '/login'
+
+axios.interceptors.response.use(response => { return response }, error => {
+  if (error.response.status === 401 && error.response.config.url !== "http://localhost:8080") {
+    console.log(error.response)
+    return window.location.href = '/login';
   }
 });
 

@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+<<<<<<< HEAD
 import { Button, Container, Paper, TextField, Typography, makeStyles } from '@material-ui/core';
+=======
+//import Container from '@material-ui/core/Container';
+import { Button, Container, TextField, Typography, makeStyles, Paper } from '@material-ui/core';
+>>>>>>> 057cbd93a565975d38ddc84de810c75745803dfe
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 //import { useForm } from "react-hook-form";
 //import { useHistory } from "react-router-dom";
@@ -49,6 +54,14 @@ const useStyles = makeStyles((theme) => ({
         padding: '0 30px',
       },
     },
+    paper: {
+      marginTop: theme.spacing(4),
+      padding: theme.spacing(2),
+      display: 'flex',
+      overflow: 'hidden',
+      flexDirection: 'column',
+      minHeight: 200,
+    },
   }));
 
 function LogQuery() {
@@ -63,8 +76,14 @@ function LogQuery() {
   };
     return (
        <>
+<<<<<<< HEAD
        
        <h1 >Log a Query</h1>
+=======
+       <Container>
+         <Paper elevation={3}>
+       <h1>Log a Query</h1>
+>>>>>>> 057cbd93a565975d38ddc84de810c75745803dfe
        <p>Please fill in the form to log a query</p>
        <p></p>
        <p></p>
@@ -183,6 +202,8 @@ function LogQuery() {
 
             
         </Container>
+        </Paper>
+       </Container>
        </>
     );
  }

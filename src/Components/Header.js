@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import { AppBar, Button, Container, IconButton, Toolbar } from '@material-ui/core';
 import { List, ListItem, ListItemText } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
@@ -23,23 +24,41 @@ const useStyles = makeStyles({
         background: 'white'
     }
 });
-
-const links = [
+const defaultNavigationLinks = [
     { title: `home`, path: `/` },
     { title: `apply`, path: `/apply` },
     { title: `myProfile`, path: `/myprofile` },
-    { title: `StaffQuery`, path: `/StaffQuery` },
     { title: `log query`, path: `/logquery` },
     { title: `house rules`, path: `/houserules` },
+    { title: `MyResidence`, path: `/MyResidence` },
+    { title: `login`, path: `/login`}
 ];
-const Header2 = () => {
+const studentNavigationLinks = [
+    { title: `home`, path: `/` },
+    { title: `apply`, path: `/apply` },
+    { title: `myProfile`, path: `/myprofile` },
+    { title: `log query`, path: `/logquery` },
+    { title: `house rules`, path: `/houserules` },
+<<<<<<< HEAD
+=======
+    { title: `MyResidence`, path: `/MyResidence` },
+    { title: `logout`, path: `/logout`}
+>>>>>>> 057cbd93a565975d38ddc84de810c75745803dfe
+];
+const staffNavigationLinks = [
+    { title: `home`, path: `/` },
+    { title: `myProfile`, path: `/myprofile` },
+    { title: `StaffQuery`, path: `/StaffQuery` },
+    { title: `logout`, path: `/logout`}
+];
+const Banner = () => {
     const classes = useStyles();
     return (
         <AppBar position="static">
             <Toolbar className={classes.navColour}>
                 <Container className={classes.conatinerSpacing}>
-                    <IconButton edge="Start" className={classes.menuButton} color="inherit" aria-label="menu">
-                        <img src={myResLogo} alt="Web Logo"/>
+                    <IconButton className={classes.menuButton} color="inherit" aria-label="menu">
+                        <img src={myResLogo} alt="Web Logo" />
                         {/* Put Logo Here AND REMOVE BUTTON ABOVE */}
                     </IconButton>
                 </Container>
@@ -47,18 +66,18 @@ const Header2 = () => {
         </AppBar>
     )
 }
-const Header = () => {
+const DefaultNavigation = () => {
     const classes = useStyles();
     return (
         <AppBar position="static">
             <Toolbar>
                 <Container className={classes.conatinerSpacing}>
-                    <IconButton edge="Start" className={classes.menuButton} color="inherit" aria-label="menu">
+                    <IconButton className={classes.menuButton} color="inherit" aria-label="menu">
                         {/* Put Logo Here AND REMOVE BUTTON ABOVE */}
                     </IconButton>
                     <List component="nav" aria-labelledby="main navigation" className={classes.navSpacing}>
-                        {/* Iterating through links and creating buttons for them... */}
-                        {links.map(({ title, path }) => (
+                        {/* Iterating through defaultNavigationLinks and creating buttons for them... */}
+                        {defaultNavigationLinks.map(({ title, path }) => (
                             <Link key={title} to={path} className={classes.linkText}>
                                 <ListItem button>
                                     <ListItemText primary={title} />
@@ -71,16 +90,58 @@ const Header = () => {
         </AppBar>
     )
 }
+const StudentNavigation = () => {
+    const classes = useStyles();
+    return (
+        <AppBar position="static">
+            <Toolbar>
+                <Container className={classes.conatinerSpacing}>
+                    <IconButton className={classes.menuButton} color="inherit" aria-label="menu">
+                        {/* Put Logo Here AND REMOVE BUTTON ABOVE */}
+                    </IconButton>
+                    <List component="nav" aria-labelledby="main navigation" className={classes.navSpacing}>
+                        {/* Iterating through defaultNavigationLinks and creating buttons for them... */}
+                        {studentNavigationLinks.map(({ title, path }) => (
+                            <Link key={title} to={path} className={classes.linkText}>
+                                <ListItem button>
+                                    <ListItemText primary={title} />
+                                </ListItem>
+                            </Link>
+                        ))}
+                    </List>
+                </Container>
+            </Toolbar>
+        </AppBar>
+    )
+}
+const StaffNavigation = () => {
+    const classes = useStyles();
+    return (
+        <AppBar position="static">
+            <Toolbar>
+                <Container className={classes.conatinerSpacing}>
+                    <IconButton className={classes.menuButton} color="inherit" aria-label="menu">
+                        {/* Put Logo Here AND REMOVE BUTTON ABOVE */}
+                    </IconButton>
+                    <List component="nav" aria-labelledby="main navigation" className={classes.navSpacing}>
+                        {/* Iterating through defaultNavigationLinks and creating buttons for them... */}
+                        {staffNavigationLinks.map(({ title, path }) => (
+                            <Link key={title} to={path} className={classes.linkText}>
+                                <ListItem button>
+                                    <ListItemText primary={title} />
+                                </ListItem>
+                            </Link>
+                        ))}
+                    </List>
+                </Container>
+            </Toolbar>
+        </AppBar>
+    )
+}
+function DisplayHeaders({ loginInfo }) {
 
-function DisplayHeaders(){
-    let components;
-
-    components = (
-    <>
-        <Header2/>
-        <Header/>
-    </>);
-
-    return components;
+    if (loginInfo.role === "student") { return <> <Banner /> <StudentNavigation />  </> }
+    else if (loginInfo.role === "admin") { return <> <Banner /> <StaffNavigation />  </> }
+    return <> <Banner /> <DefaultNavigation /> </>
 }
 export default DisplayHeaders
