@@ -35,9 +35,25 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
 
 
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    marginTop: theme.spacing(8),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  form: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(1),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+}));
+
 function MyResidence() {
-   
-   //const classes = useStyles();
+   const history = useHistory();
+   const classes = useStyles();
    const [level, setLevel] = React.useState('');
    const [residence, setResidence] = React.useState('');
 
@@ -47,6 +63,21 @@ function MyResidence() {
 
    
  };
+ const { register, handleSubmit } = useForm();
+ const onSubmit = data => {
+  axios.get("http://localhost:8080", { auth: data })
+    .then(response => {
+      console.log(response)
+      if (response.status === 200) {
+        console.log("LOGGED IN")
+        history.push('/');
+      }
+    }
+    ).catch(error => {
+      console.log(error)
+    }
+    );
+}
  
  
    return (
@@ -55,7 +86,7 @@ function MyResidence() {
       <CssBaseline />
         
       <Container maxWidth="sm">         
-        <Typography  component="div"   style={{ backgroundColor: '#cfe8fc', height: '50vh', weight: '1000' }} > <h2>Login to myResidence Profile</h2>
+        <Typography  component="div"   style={{ backgroundColor: '', height: '50vh', weight: '1000' }} > <h2>Login to myResidence Profile</h2>
          
         <Paper >
                <Table>
@@ -66,30 +97,34 @@ function MyResidence() {
                   </TableHead>
                   <TableBody>
                   <TableRow>
-                        <TableCell> <div>
+                        <TableCell> <div className={classes.form} onSubmit={handleSubmit(onSubmit)}> 
                 <TextField
                     id="outlined-textarea"
-                    label="Student Email"
+                    label="Student Username"
                     style={{ margin: 8 }}
                     fullWidth
                     margin="normal"
-                    placeholder="Placeholder"
+                    placeholder="Student Username"
                     multiline
                     variant="outlined"
+                    inputRef={register}
+                    autoFocus
                 />
                                
                 </div>     </TableCell>
                         <TableCell></TableCell>
-                        <TableCell align="right"> <div>
+                        <TableCell align="right"> <div className={classes.form} onSubmit={handleSubmit(onSubmit)}>
                 <TextField
                     id="outlined-textarea"
-                    label="Staff Email"
+                    label="Staff Username"
                     style={{ margin: 8 }}
                     fullWidth
                     margin="normal"
-                    placeholder="Placeholder"
+                    placeholder="Staff Username"
                     multiline
                     variant="outlined"
+                    inputRef={register}
+                    autoFocus
                 />
                                 
                 </div>     </TableCell>
@@ -102,9 +137,11 @@ function MyResidence() {
                     style={{ margin: 8 }}
                     fullWidth
                     margin="normal"
-                    placeholder="Placeholder"
+                    placeholder="Password"
                     multiline
                     variant="outlined"
+                    inputRef={register}
+                    autoComplete="current-password"
                 />
                               
                 </div>      </TableCell>
@@ -116,27 +153,31 @@ function MyResidence() {
                     style={{ margin: 8 }}
                     fullWidth
                     margin="normal"
-                    placeholder="Placeholder"
+                    placeholder="Password"
                     multiline
                     variant="outlined"
+                    inputRef={register}
+                    autoComplete="current-password"
                 />
                                 
                 </div>     </TableCell>
                      </TableRow>
                      <TableRow>
-                        <TableCell><Button
+                      <TableCell><Button
                     type="Submit for Student "
                     fullWidth
                     variant="contained"
                     color="primary"
+                    className={classes.submit}
                    
                 > Submit </Button></TableCell>
-                <TableCell></TableCell>
-                        <TableCell align="right"><Button
+                    <TableCell></TableCell>
+                    <TableCell align="right"><Button
                     type="Submit for Res Coodinator"
                     fullWidth
                     variant="contained"
                     color="primary"
+                    className={classes.submit}
                    
                 > Submit </Button></TableCell>
                      </TableRow>                     
@@ -147,7 +188,7 @@ function MyResidence() {
        </FormGroup>
         </FormControl></TableCell>
                      <TableCell></TableCell>
-                     <TableCell align="right">Forgot Password</TableCell>
+                     <TableCell align="right"><a href="https://myclassroom.cput.ac.za/">Forgot Password</a></TableCell>
                      </TableRow>
                   </TableBody>
                </Table>
