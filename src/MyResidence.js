@@ -188,7 +188,7 @@ function MyResidence() {
        </FormGroup>
         </FormControl></TableCell>
                      <TableCell></TableCell>
-                     <TableCell align="right">Forgot Password</TableCell>
+                     <TableCell align="right"><a href="https://myclassroom.cput.ac.za/">Forgot Password</a></TableCell>
                      </TableRow>
                   </TableBody>
                </Table>
