@@ -34,7 +34,6 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 //import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 
-import { withRouter } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -209,6 +208,5 @@ function MyResidence() {
 
 }
 
-export default withRouter(MyResidence);
-
+export default MyResidence;
 
