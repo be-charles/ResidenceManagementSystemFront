@@ -126,6 +126,9 @@ function MyResidence() {
                     variant="outlined"
                     inputRef={register}
                     autoFocus
+                    //variant="outlined"
+                    //required
+                    
                 />
                                 
                 </div>     </TableCell>
@@ -133,32 +136,32 @@ function MyResidence() {
                      <TableRow>
                         <TableCell> <div>
                 <TextField
-                    id="outlined-textarea"
-                    label="Password"
                     style={{ margin: 8 }}
                     fullWidth
+                    id="outlined-textarea"
                     margin="normal"
-                    placeholder="Password"
-                    multiline
+                    label="Password"
+                    type="password"
+                    autoComplete="current-password"
                     variant="outlined"
                     inputRef={register}
-                    autoComplete="current-password"
+                   
                 />
                               
                 </div>      </TableCell>
                         <TableCell> </TableCell>
                         <TableCell align="right"> <div>
                 <TextField
-                    id="outlined-textarea"
-                    label="Password"
                     style={{ margin: 8 }}
                     fullWidth
+                    id="outlined-textarea"
                     margin="normal"
-                    placeholder="Password"
-                    multiline
+                    label="Password"
+                    type="password"
+                    autoComplete="current-password"
                     variant="outlined"
                     inputRef={register}
-                    autoComplete="current-password"
+                   
                 />
                                 
                 </div>     </TableCell>
