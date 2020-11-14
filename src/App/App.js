@@ -12,7 +12,7 @@ import Students from '../Students';
 import Login from '../Auth/Login';
 import Logout from '../Auth/Logout';
 import ExamplePage from '../ExamplePage';
-import MyResidence from '../MyResidence';
+import MyResLogin from '../Auth/MyResLogin';
 import StaffQuery from '../StaffQuery';
 import LogQuery from '../LogQuery';
 import HouseRules from '../HouseRules';
@@ -45,11 +45,11 @@ function App() {
         <Header loginInfo={loginInfo} />
         <Switch>
           <Route path="/" exact render={props => (<Home />)} />
-          <Route path="/login" exact render={props => (<Login />)} />
+          <Route path="/myres/login" exact render={props => (<Login />)} />
           <Route path="/logout" exact render={props => (<Logout />)} />
           <Route path="/faq"exact render={props => (<FAQ />)} />
 
-          <Route path="/MyResidence" exact render={props => (<MyResidence />)} />
+          <Route path="/myres" exact render={props => (<MyResLogin />)} />
           <Route path="/apply" exact render={props => (<Apply />)} />
           <Route path="/StaffQuery" exact render={props => (<StaffQuery />)} />
           <Route path="/logquery" exact render={props => (<LogQuery />)} />
