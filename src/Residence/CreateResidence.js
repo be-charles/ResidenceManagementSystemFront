@@ -34,7 +34,7 @@ const Create = () => {
         <Container component="main" maxWidth="xs">
             <Typography component="h1" variant="h5">
                 Create Residence
-          </Typography>
+            </Typography>
             <form className={classes.form} noValidate onSubmit={handleSubmit(onSubmit)} >
                 <TextField
                     margin="normal"
