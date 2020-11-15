@@ -27,7 +27,7 @@ const useStyles = makeStyles({
 const defaultNavigationLinks = [
     { title: `home`, path: `/` },
     { title: `faq`, path: `/faq`},
-    { title: `MyResidence`, path: `/MyResidence`}
+    { title: `myRES Login`, path: `/myres`}
 ];
 const studentNavigationLinks = [
     { title: `home`, path: `/` },
@@ -35,12 +35,12 @@ const studentNavigationLinks = [
     { title: `myProfile`, path: `/myprofile` },
     { title: `log query`, path: `/logquery` },
     { title: `house rules`, path: `/houserules` },
-   // { title: `MyResidence`, path: `/MyResidence` },
     { title: `logout`, path: `/logout`}
 ];
 const staffNavigationLinks = [
     { title: `home`, path: `/` },
     { title: `StaffQuery`, path: `/StaffQuery` },
+    { title: `students`, path: `/students`},
     { title: `logout`, path: `/logout`}
 ];
 
