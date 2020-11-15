@@ -154,7 +154,7 @@ List of Approved Students
         <Tab label="Christ Kitenge Mbuyi" {...a11yProps(0)} />
         <Tab label="Junaid Martin" {...a11yProps(1)} />
         <Tab label="Phumelela Hoho" {...a11yProps(2)} />
-        <Tab label="Luzuko Tshaka4" {...a11yProps(3)} />
+        <Tab label="Luzuko Tshaka" {...a11yProps(3)} />
       </Tabs>
       <TabPanel value={value} index={0}>
       </TabPanel>

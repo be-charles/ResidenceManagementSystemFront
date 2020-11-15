@@ -9,10 +9,10 @@ import MyProfile from '../MyProfile/MyProfile';
 import Residences from '../Residence/ReadResidences';
 import CreateResidence from '../Residence/CreateResidence';
 import Students from '../Students';
-import MyResidence from '../Auth/MyResidence';
+import Login from '../Auth/Login';
 import Logout from '../Auth/Logout';
 import ExamplePage from '../ExamplePage';
-//import MyResidence from '../MyResidence';
+import MyResLogin from '../Auth/MyResLogin';
 import StaffQuery from '../StaffQuery';
 import LogQuery from '../LogQuery';
 import HouseRules from '../HouseRules';
@@ -45,11 +45,11 @@ function App() {
         <Header loginInfo={loginInfo} />
         <Switch>
           <Route path="/" exact render={props => (<Home />)} />
-          <Route path="/MyResidence" exact render={props => (<MyResidence />)} />
+          <Route path="/myres/login" exact render={props => (<Login />)} />
           <Route path="/logout" exact render={props => (<Logout />)} />
           <Route path="/faq"exact render={props => (<FAQ />)} />
 
-         {/* <Route path="/MyResidence" exact render={props => (<MyResidence />)} />*/}
+          <Route path="/myres" exact render={props => (<MyResLogin />)} />
           <Route path="/apply" exact render={props => (<Apply />)} />
           <Route path="/StaffQuery" exact render={props => (<StaffQuery />)} />
           <Route path="/logquery" exact render={props => (<LogQuery />)} />
