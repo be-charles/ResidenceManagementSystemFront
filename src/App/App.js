@@ -17,12 +17,6 @@ import StaffQuery from '../StaffQuery';
 import LogQuery from '../LogQuery';
 import HouseRules from '../HouseRules';
 import FAQ from '../FAQ';
-import ManageResidences from '../ManageResidences';
-import ManageStudents from '../ManageStudents';
-import CityEdgeResidence from '../CityEdgeResidence';
-import HanovorResince from '../HanovorResince';
-import CatsvilleResidence from '../CatsvilleResidence';
-import ManageStaff from '../ManageStaff';
 
 function App() {
   //LOGIN CHECK
@@ -67,16 +61,6 @@ function App() {
           <Route path="/students" exact render={props => (<Students />)} />
           <Route path="/residence" exact render={props => (<Residences />)} />
           <Route path="/residence/create" exact render={props => (<CreateResidence />)} />
-          <Route path="/manageResidences" exact render={props => (<ManageResidences />)} />
-
-          {/* For Residences*/}
-          <Route path="/CityEdgeResidence" exact render={props => (<CityEdgeResidence />)} />
-          <Route path="/HanovorResince" exact render={props => (<HanovorResince />)} />
-          <Route path="/CatsvilleResidence" exact render={props => (<CatsvilleResidence />)} />
-
-          {/* For Staff and Students*/}
-          <Route path="/ManageStudents" exact render={props => (<ManageStudents />)} />
-          <Route path="/ManageStaff" exact render={props => (<ManageStaff />)} />
 
         </Switch>
       </div>
