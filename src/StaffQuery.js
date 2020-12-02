@@ -66,9 +66,6 @@ const useStyles = makeStyles((theme) => ({
           <SendIcon />
         </ListItemIcon>
         <ListItemText primary="Sent mail" />
-        <ListItemLink href="http://localhost:8080/query/read">
-          
-        </ListItemLink>
       </ListItem>
       <ListItem button>
         <ListItemIcon>

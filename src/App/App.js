@@ -6,6 +6,7 @@ import Header from '../Components/Header';
 import Home from '../Home';
 import Apply from '../Apply';
 import MyProfile from '../MyProfile/MyProfile';
+import MyProfileStaff from '../MyProfile/MyProfileStaff';
 import Residences from '../Residence/ReadResidences';
 import CreateResidence from '../Residence/CreateResidence';
 import Students from '../Students';
@@ -58,10 +59,11 @@ function App() {
 
           <Route path="/myres" exact render={props => (<MyResLogin />)} />
           <Route path="/apply" exact render={props => (<Apply />)} />
-          <Route path="/StaffQuery" exact render={props => (<StaffQuery />)} />
+          <Route path="/staffquery" exact render={props => (<StaffQuery />)} />
           <Route path="/logquery" exact render={props => (<LogQuery />)} />
           <Route path="/houserules" exact render={props => (<HouseRules />)} />
           <Route path="/myprofile" exact render={props => (<MyProfile />)} />
+          <Route path="/myprofilestaff" exact render={props => (<MyProfileStaff />)} />
 
           {/* Example pages REMOVE WHEN PROJECT IS COMPLETE */}
           <Route path="/examplepage" exact render={props => (<ExamplePage />)} />

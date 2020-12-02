@@ -42,10 +42,10 @@ const Create = () => {
   const onSubmit = data => {
     axios.post("http://localhost:8080/query/create", data)
       .then((response) => {
-        console.log(data);
         console.log(response);
         //Redirect to another page or do something else here to indicate the request was successful
         //such as creating a diolg box
+        alert("Your query has been captured");
         history.push("/");
       })
       .catch((error) => {
@@ -71,8 +71,8 @@ const Create = () => {
 
             <TextField
               inputRef={register}
-              id="queryId"
-              name="queryId"
+              id="studNum"
+              name="studNum"
               label="Student Number"
               required
               style={{ margin: 8 }}
@@ -80,7 +80,6 @@ const Create = () => {
               placeholder="Enter text here"
               multiline
               variant="outlined"
-              // defaultValue='123'
             />
 
             <TextField
@@ -97,7 +96,7 @@ const Create = () => {
             />
 
             <h2>Nature of Query</h2>
-            <FormControl name="nature" variant="outlined" className={classes.formControl} inputRef={register} fullWidth>
+            <FormControl name="nature" variant="outlined" className={classes.formControl} inputRef={register}>
               <InputLabel>Select</InputLabel>
               <Controller name="nature" control={control} as={
                 <Select
@@ -149,7 +148,6 @@ const Create = () => {
 function LogQuery() {
   return (
     <>
-        
       <Create />
     </>
   );
