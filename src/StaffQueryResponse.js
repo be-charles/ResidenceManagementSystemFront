@@ -40,7 +40,7 @@ const Create = () => {
   const classes = useStyles();    //This variable contains all our css classes
   const { register, handleSubmit, control } = useForm();   //Form validation
   const onSubmit = data => {
-    axios.post("http://localhost:8080/query/create", data)
+    axios.post("http://localhost:8080/query/update", data)
       .then((response) => {
         console.log(data);
         console.log(response);
