@@ -71,8 +71,8 @@ const Create = () => {
 
             <TextField
               inputRef={register}
-              id="studNum"
-              name="studNum"
+              id="queryId"
+              name="queryId"
               label="Student Number"
               required
               style={{ margin: 8 }}
@@ -80,6 +80,7 @@ const Create = () => {
               placeholder="Enter text here"
               multiline
               variant="outlined"
+              // defaultValue='123'
             />
 
             <TextField
@@ -96,7 +97,7 @@ const Create = () => {
             />
 
             <h2>Nature of Query</h2>
-            <FormControl name="nature" variant="outlined" className={classes.formControl} inputRef={register}>
+            <FormControl name="nature" variant="outlined" className={classes.formControl} inputRef={register} fullWidth>
               <InputLabel>Select</InputLabel>
               <Controller name="nature" control={control} as={
                 <Select
@@ -148,7 +149,7 @@ const Create = () => {
 function LogQuery() {
   return (
     <>
-
+        
       <Create />
     </>
   );
