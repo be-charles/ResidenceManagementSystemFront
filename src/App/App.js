@@ -23,6 +23,7 @@ import CityEdgeResidence from '../CityEdgeResidence';
 import HanovorResince from '../HanovorResince';
 import CatsvilleResidence from '../CatsvilleResidence';
 import ManageStaff from '../ManageStaff';
+import StaffQueryResponse from '../StaffQueryResponse';
 
 function App() {
   //LOGIN CHECK
@@ -77,6 +78,7 @@ function App() {
           {/* For Staff and Students*/}
           <Route path="/ManageStudents" exact render={props => (<ManageStudents />)} />
           <Route path="/ManageStaff" exact render={props => (<ManageStaff />)} />
+          <Route path="/StaffQueryResponse" exact render={props => (<StaffQueryResponse />)} />
 
         </Switch>
       </div>

@@ -6,56 +6,12 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import Collapse from '@material-ui/core/Collapse';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import DraftsIcon from '@material-ui/icons/Drafts';
 import SendIcon from '@material-ui/icons/Send';
-import ExpandLess from '@material-ui/icons/ExpandLess';
-import ExpandMore from '@material-ui/icons/ExpandMore';
-import StarBorder from '@material-ui/icons/StarBorder';
-
-import PropTypes from 'prop-types';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
 
 
-function TabPanel(props) {
-
-  const { children, value, index, ...other } = props;
-
-return (
-  <div
-    role="tabpanel"
-    hidden={value !== index}
-    id={`vertical-tabpanel-${index}`}
-    aria-labelledby={`vertical-tab-${index}`}
-    {...other}
-  >
-    {value === index && (
-      <Box p={3}>
-        <Typography>{children}</Typography>
-      </Box>
-    )}
-  </div>
-
-);
-    
-}
-
-TabPanel.propTypes = {
-children: PropTypes.node,
-index: PropTypes.any.isRequired,
-value: PropTypes.any.isRequired,
-};
-
-function a11yProps(index) {
-return {
-  id: `vertical-tab-${index}`,
-  'aria-controls': `vertical-tabpanel-${index}`,
-};
-}
-
-
+function StaffQuery() {
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -82,19 +38,16 @@ const useStyles = makeStyles((theme) => ({
   
 }));
 
-function StaffQuery() {
-  const classes = useStyles();
   const [open, setOpen] = React.useState(true);
-  const [value, setValue] = React.useState(0);
-  
   const handleClick = () => {
     setOpen(!open);
+  };
+
+  function ListItemLink(props) {
+    return <ListItem button component="a" {...props} />;
   }
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-
-  };
+  const classes = useStyles();
 
   return (
     <div>
@@ -119,24 +72,17 @@ function StaffQuery() {
           <DraftsIcon />
         </ListItemIcon>
         <ListItemText primary="Drafts" />
+        <ListItemLink href="http://localhost:6677/StaffQueryResponse">
+</ListItemLink>
       </ListItem>
       <ListItem button onClick={handleClick}>
         <ListItemIcon>
           <InboxIcon />
         </ListItemIcon>
         <ListItemText primary="Inbox" />
-        {open ? <ExpandLess /> : <ExpandMore />}
+        <ListItemLink href="http://localhost:8080/query/all"></ListItemLink>      
+      
       </ListItem>
-      <Collapse in={open} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItem button className={classes.nested}>
-            <ListItemIcon>
-              <StarBorder />
-            </ListItemIcon>
-            <ListItemText primary="Starred" />
-          </ListItem>
-        </List>
-      </Collapse>
     </List> 
 </div>
   );
