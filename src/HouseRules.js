@@ -19,6 +19,7 @@ function HouseRules() {
                   padding: theme.spacing(10),
                   display: 'flex',
                   overflow: 'hidden',
+                  textAlign: "justify",
                   flexDirection: 'column',
                   minHeight: 200,
             },

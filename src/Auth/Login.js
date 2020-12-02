@@ -39,6 +39,17 @@ function Login() {
       );
   }
 
+  const [values, setValues] = React.useState({
+    name: ""
+  });
+
+  const handleChange = name => event => {
+    setValues({ ...values, [name]: event.target.value });
+  };
+
+  const error = values.name !== "stud123";
+  const errorb = values.name !== "admin123";
+  
   return (
     <Container component="main" maxWidth="xs">
       <div className={classes.paper}>
@@ -58,16 +69,20 @@ function Login() {
             autoFocus
           />
           <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            inputRef={register}
-            autoComplete="current-password"
+           variant="outlined"
+           margin="normal"
+           required
+           fullWidth
+           name="password"
+           value={values.name}
+           onChange={handleChange("name")}
+           helperText={error && errorb ? "Please ensure username and password are correct": "Perfect!"}
+           error={error && errorb}
+           label="Password"
+           type="password"
+           id="password"
+           inputRef={register}
+           autoComplete="current-password"
           />
           <Button
             type="submit"

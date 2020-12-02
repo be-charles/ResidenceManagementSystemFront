@@ -6,6 +6,7 @@ import Header from '../Components/Header';
 import Home from '../Home';
 import Apply from '../Apply';
 import MyProfile from '../MyProfile/MyProfile';
+import MyProfileStaff from '../MyProfile/MyProfileStaff';
 import Residences from '../Residence/ReadResidences';
 import CreateResidence from '../Residence/CreateResidence';
 import Students from '../Students';
@@ -18,17 +19,21 @@ import LogQuery from '../LogQuery';
 import HouseRules from '../HouseRules';
 import FAQ from '../FAQ';
 import ManageResidences from '../ManageResidences';
-import ManageStudents from '../ManageResidence/ManageStudents';
-import ManageStaff from '../ManageResidence/ManageStaff';
-import CityEdgeResidence from '../ManageResidence/CityEdgeResidence';
-import HanovorResince from '../ManageResidence/HanovorResince';
-import CatsvilleResidence from '../ManageResidence/CatsvilleResidence';
+
 import CreateResRoom from '../ManageResidence/CreateResRoom';
 import CraeteStudent from '../ManageResidence/CreateStudent'
 import CreateCityEdgeResRoom from '../ManageResidence/CreateCityEdgeResRoom';
 import CreateResidenceHanover from '../ManageResidence/CreateCityEdgeResRoom'
 import UpdateCatsvilleResRoom from '../ManageResidence/UpdateCatsvilleResRoom';
 import UpdateStudent from '../ManageResidence/UpdateStudents'
+
+import ManageStudents from '../ManageStudents';
+import CityEdgeResidence from '../CityEdgeResidence';
+import HanovorResince from '../HanovorResince';
+import CatsvilleResidence from '../CatsvilleResidence';
+import ManageStaff from '../ManageStaff';
+import StaffQueryResponse from '../StaffQueryResponse';
+
 
 function App() {
   //LOGIN CHECK
@@ -63,10 +68,11 @@ function App() {
 
           <Route path="/myres" exact render={props => (<MyResLogin />)} />
           <Route path="/apply" exact render={props => (<Apply />)} />
-          <Route path="/StaffQuery" exact render={props => (<StaffQuery />)} />
+          <Route path="/staffquery" exact render={props => (<StaffQuery />)} />
           <Route path="/logquery" exact render={props => (<LogQuery />)} />
           <Route path="/houserules" exact render={props => (<HouseRules />)} />
           <Route path="/myprofile" exact render={props => (<MyProfile />)} />
+          <Route path="/myprofilestaff" exact render={props => (<MyProfileStaff />)} />
 
           {/* Example pages REMOVE WHEN PROJECT IS COMPLETE */}
           <Route path="/examplepage" exact render={props => (<ExamplePage />)} />
@@ -88,6 +94,7 @@ function App() {
           {/* For Staff and Students*/}
           <Route path="/ManageStudents" exact render={props => (<ManageStudents />)} />
           <Route path="/ManageStaff" exact render={props => (<ManageStaff />)} />
+          <Route path="/StaffQueryResponse" exact render={props => (<StaffQueryResponse />)} />
 
         </Switch>
       </div>

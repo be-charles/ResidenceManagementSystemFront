@@ -40,12 +40,12 @@ const Create = () => {
   const classes = useStyles();    //This variable contains all our css classes
   const { register, handleSubmit, control } = useForm();   //Form validation
   const onSubmit = data => {
-    axios.post("http://localhost:8080/query/create", data)
+    axios.post("http://localhost:8080/query/update", data)
       .then((response) => {
+        console.log(data);
         console.log(response);
         //Redirect to another page or do something else here to indicate the request was successful
         //such as creating a diolg box
-        alert("Your query has been captured");
         history.push("/");
       })
       .catch((error) => {
@@ -64,8 +64,8 @@ const Create = () => {
     <>
       <Container component="main" className={classes.container}>
         <Paper className={classes.paper} elevation={3}>
-          <h1>Log a Query</h1>
-          <h2>Please fill in the form to log a query</h2>
+          <h1>Respond to student query</h1>
+          <h2>Please fill in all required fields </h2>
 
           <form className={classes.form} noValidate onSubmit={handleSubmit(onSubmit)}>
 
@@ -82,18 +82,6 @@ const Create = () => {
               variant="outlined"
             />
 
-            <TextField
-              inputRef={register}
-              name="fullName"
-              id="fullName"
-              label="Full Name"
-              required
-              style={{ margin: 8 }}
-              fullWidth
-              placeholder="Enter text here"
-              multiline
-              variant="outlined"
-            />
 
             <h2>Nature of Query</h2>
             <FormControl name="nature" variant="outlined" className={classes.formControl} inputRef={register}>
@@ -145,12 +133,13 @@ const Create = () => {
 };
 
 
-function LogQuery() {
+function StaffQueryResponse() {
   return (
     <>
+
       <Create />
     </>
   );
 }
 
-export default LogQuery;
+export default StaffQueryResponse;

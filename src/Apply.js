@@ -1,27 +1,130 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Button, Container, makeStyles, Typography, Paper, Table, TableHead, TableBody, TableCell, TableRow, Divider, Grid } from "@material-ui/core";
-import { useDropzone } from 'react-dropzone';
+import { Button, Container, makeStyles, Typography, Paper, Table, TableHead, TableBody, TableCell, TableRow, TextField, Divider, Grid } from "@material-ui/core";
+import { useForm } from 'react-hook-form';
 
-const ApplicationStatus = () => {
-   const useStyles = makeStyles((theme) => ({
-      title: {
-         fontSize: 20,
-         textAlign: "left",
-         fontWeight: "bold",
-         paddingTop: theme.spacing(3),
-         paddingBottom: theme.spacing(1),
-         paddingLeft: theme.spacing(2)
-      },
-      paper: {
-         marginTop: theme.spacing(4),
-         padding: theme.spacing(2),
-         display: 'flex',
-         overflow: 'hidden',
-         flexDirection: 'column',
-         minHeight: 200,
-      },
-   }));
+const apiBaseURL = "http://localhost:8080/applications";
+
+//STYLING
+const useStyles = makeStyles((theme) => ({
+   title: {
+      fontSize: 20,
+      textAlign: "left",
+      fontWeight: "bold",
+   },
+   subtitle: {
+      textAlign: "left",
+      paddingLeft: theme.spacing(3),
+      paddingTop: theme.spacing(3),
+      paddingRight: theme.spacing(3),
+      paddingBottom: theme.spacing(2),
+   },
+   paper: {
+      marginTop: theme.spacing(4),
+      padding: theme.spacing(2),
+      display: 'flex',
+      overflow: 'auto',
+      flexDirection: 'column',
+      minHeight: 100,
+   },
+   dropzone: {
+      borderStyle: {},
+      backgroundColor: theme.palette.primary.light,
+      borderRadius: 10,
+      color: theme.palette.primary.dark,
+      minHeight: 50,
+      verticalAlign: "middle",
+      padding: 25,
+      marginLeft: 100,
+      marginRight: 100,
+   },
+   button: {
+      backgroundColor: theme.palette.primary.dark,
+      color: theme.palette.primary.light,
+      padding: theme.spacing(1),
+      marginTop: theme.spacing(2),
+      height: 50,
+      width: 200,
+   },
+   divider: {
+      marginTop: theme.spacing(2)
+   },
+   textField: {
+      marginLeft: theme.spacing(3),
+      padding: 0,
+   }
+}));
+
+//QUERIES
+const GetApplicationData = (setApplicationData) => {
+   axios.get(`${apiBaseURL}/myapplication`)
+      .then((response) => { setApplicationData(response); })
+      .catch((error) => { });
+}
+
+//COMPONENTS
+//NO APPLICATION DATA
+const SubmitApplication = () => {
+   const { register, handleSubmit } = useForm();
+
+   const onSubmit = data => {
+      let formData = new FormData();
+      formData.append('studentId', data.studentId);
+      formData.append('applicationForms', data.applicationForms[0]);
+      axios.post(`${apiBaseURL}/new`,
+         formData,
+         { headers: { 'Content-Type': 'multipart/form-data' } }
+      )
+         .then(response => {
+            console.log(response)
+            window.location.reload(false);
+         })
+         .catch(error => { console.log(error) });
+   }
+
+   //STYLING
+   const classes = useStyles();
+
+   return (
+      <Container>
+         <Paper className={classes.paper} elevation={3}>
+            <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
+               <Typography className={classes.title}>Submit Application</Typography>
+               <Typography className={classes.subtitle}>Step 1: Enter your student number</Typography>
+               <Grid container justify="space-between">
+                  <TextField
+                     className={classes.textField}
+                     margin="normal"
+                     required
+                     align="left"
+                     id="studentId"
+                     label="Student Number"
+                     name="studentId"
+                     fullWidth
+                     inputRef={register}
+                     autoFocus
+                     type="text"
+                  />
+               </Grid>
+               <Divider className={classes.divider} />
+               <Grid container justify="space-between">
+                  <Typography className={classes.subtitle}>Step 2: Download Documents</Typography>
+                  <Button className={classes.button} href="/data/apply.pdf" download>Download</Button>
+               </Grid>
+               <Divider className={classes.divider} />
+               <Typography className={classes.subtitle}>Step 3: Upload Documents and Press Submit</Typography>
+               <input ref={register} type="file" name="applicationForms" required />
+               <Grid container justify="flex-end">
+                  <Button className={classes.button} type="submit">Submit Application</Button>
+               </Grid>
+            </form>
+         </Paper>
+      </Container>
+   );
+}
+
+//WE HAVE APPLICATION DATA
+const ApplicationStatus = ({applicationData}) => {
    const classes = useStyles();
 
    return (
@@ -33,13 +136,11 @@ const ApplicationStatus = () => {
                <Table>
                   <TableHead>
                      <TableCell>Submission Date</TableCell>
-                     <TableCell>Reference Number</TableCell>
                      <TableCell>Status</TableCell>
                   </TableHead>
                   <TableBody>
-                     <TableCell>2020-11-08</TableCell>
-                     <TableCell>50dd9e79053a324e795a498e4909734220d9deb0d32637eb480437fb25e25faa</TableCell>
-                     <TableCell>PROCESSING</TableCell>
+                     <TableCell>{applicationData.data.data.submissionDate}</TableCell>
+                     <TableCell>{applicationData.data.data.applicationStatus}</TableCell>
                   </TableBody>
                </Table>
             </Paper>
@@ -75,230 +176,53 @@ const ApplicationStatus = () => {
    );
 }
 
-
-const SubmitApplication = () => {
-   //DROPZONE
-   const onDrop = useCallback(acceptedFiles => {
-      const file = acceptedFiles[0];
-      console.log(file);
-   }, [])
-   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
-
-   //STYLING
-   const useStyles = makeStyles((theme) => ({
-      title: {
-         fontSize: 20,
-         textAlign: "left",
-         fontWeight: "bold",
-      },
-      subtitle: {
-         textAlign: "left",
-         padding: theme.spacing(3)
-      },
-      paper: {
-         marginTop: theme.spacing(4),
-         padding: theme.spacing(2),
-         display: 'flex',
-         overflow: 'auto',
-         flexDirection: 'column',
-         minHeight: 100,
-      },
-      dropzone: {
-         borderStyle: {},
-         backgroundColor: theme.palette.primary.light,
-         borderRadius: 10,
-         color: theme.palette.primary.dark,
-         minHeight: 100,
-         verticalAlign: "middle",
-      },
-      button: {
-         backgroundColor: theme.palette.primary.dark,
-         color: theme.palette.primary.light,
-         padding: theme.spacing(1),
-         marginTop: theme.spacing(1),
-         height: 50,
-         width: 200,
-      },
-      divider: {
-         marginTop: theme.spacing(1)
-      }
-   }));
-   const classes = useStyles();
-
-   return (
-      <Container>
-         <Paper className={classes.paper} elevation={3}>
-            <Typography className={classes.title}>Resubmit Application</Typography>
-            <Grid container justify="space-between">
-               <Typography className={classes.subtitle}>Step 1: Download Documents</Typography>
-               <Button className={classes.button}>Download</Button>
-            </Grid>
-            <Divider className={classes.divider} />
-            <Typography className={classes.subtitle}>Step 2: Upload Documents</Typography>
-            {/* Drop Zone */}
-
-            <div className={classes.dropzone} {...getRootProps()}>
-               <input {...getInputProps()} />
-               {
-                  isDragActive ?
-                     <p>Drop the files here ...</p> :
-                     <p>Drag and drop the completed documents here, or click to select files</p>
-               }
-            </div>
-            <Grid container justify="flex-end">
-               <Button className={classes.button}>Resubmit Application</Button>
-            </Grid>
-         </Paper>
-      </Container>
-   );
-}
-
-const ResubmitApplication = () => {
-   //DROPZONE
-   const onDrop = useCallback(acceptedFiles => {
-      const file = acceptedFiles[0];
-      console.log(file);
-   }, [])
-   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
-
-   //STYLING
-   const useStyles = makeStyles((theme) => ({
-      title: {
-         fontSize: 20,
-         textAlign: "left",
-         fontWeight: "bold",
-      },
-      subtitle: {
-         textAlign: "left",
-         padding: theme.spacing(3)
-      },
-      paper: {
-         marginTop: theme.spacing(4),
-         padding: theme.spacing(2),
-         display: 'flex',
-         overflow: 'auto',
-         flexDirection: 'column',
-         minHeight: 100,
-      },
-      dropzone: {
-         borderStyle: {},
-         backgroundColor: theme.palette.primary.light,
-         borderRadius: 10,
-         color: theme.palette.primary.dark,
-         minHeight: 100,
-         verticalAlign: "middle",
-      },
-      button: {
-         backgroundColor: theme.palette.primary.dark,
-         color: theme.palette.primary.light,
-         padding: theme.spacing(1),
-         marginTop: theme.spacing(1),
-         height: 50,
-         width: 200,
-      },
-      divider: {
-         marginTop: theme.spacing(1)
-      }
-   }));
-   const classes = useStyles();
-
-   return (
-      <Container>
-         <Paper className={classes.paper} elevation={3}>
-            <Typography className={classes.title}>Resubmit Application</Typography>
-            <Grid container justify="space-between">
-               <Typography className={classes.subtitle}>Step 1: Download Documents</Typography>
-               <Button className={classes.button}>Download</Button>
-            </Grid>
-            <Divider className={classes.divider} />
-            <Typography className={classes.subtitle}>Step 2: Upload Documents</Typography>
-            {/* Drop Zone */}
-
-            <div className={classes.dropzone} {...getRootProps()}>
-               <input {...getInputProps()} />
-               {
-                  isDragActive ?
-                     <p>Drop the files here ...</p> :
-                     <p>Drag and drop the completed documents here, or click to select files</p>
-               }
-            </div>
-            <Grid container justify="flex-end">
-               <Button className={classes.button}>Resubmit Application</Button>
-            </Grid>
-         </Paper>
-      </Container>
-   );
-}
 const CancelApplication = () => {
-   const useStyles = makeStyles((theme) => ({
-      button: {
-         backgroundColor: theme.palette.primary.dark,
-         color: theme.palette.primary.light,
-         padding: theme.spacing(1),
-         marginTop: theme.spacing(1),
-         margin: "auto",
-         height: 50,
-         width: 200,
-      },
-      container: {
-         marginBottom: theme.spacing(10)
-      },
-      title: {
-         fontSize: 20,
-         textAlign: "left",
-         fontWeight: "bold",
-      },
-      paper: {
-         marginTop: theme.spacing(4),
-         padding: theme.spacing(2),
-         display: 'flex',
-         overflow: 'auto',
-         flexDirection: 'column',
-         minHeight: 100,
-      },
-   }));
    const classes = useStyles();
+   const onSubmit = () => {
+      axios.delete(`${apiBaseURL}/cancel`)
+         .then(response => {
+            console.log(response)
+            window.location.reload(false);
+         })
+         .catch(error => { console.log(error) });
+   }
    return (
-      <Container className={classes.container} >
+      <Container>
          <Paper className={classes.paper} elevation={3}>
             <Typography className={classes.title}>Cancel Application</Typography>
-            <Typography>Click below to cancel your application. You will still be able to re-apply at a later date</Typography>
-            <Button className={classes.button}>Cancel Application</Button>
+            <Typography className={classes.subtitle}>
+               Click on the button below to cancel your application.You can re-apply at a later date.
+            </Typography>
+            <Grid container justify="flex-end">
+               <form className={classes.form} onSubmit={onSubmit}>
+                  <Button className={classes.button} type="submit">Cancel Application</Button>
+               </form>
+            </Grid>
          </Paper>
       </Container>
    );
 }
 
+//MAIN
 function Apply() {
    const [applicationData, setApplicationData] = useState();
 
-   const getApplication = () => {
-      axios.get("http://localhost:8080/residence/all")
-         .then(response => {
-            setApplicationData(response.data);
-         }).catch(error => {
-            console.log(error);
-         });
-   }
+   let components = (<> <SubmitApplication /> </>);
 
-   useEffect(() => { setApplicationData({ "A": "1" }); getApplication(); }, []);
+   useEffect(() => {
+      GetApplicationData(setApplicationData);
+   }, []);
 
-   console.log("Application Data: " + applicationData);
-
-   let components;
-
-   if (applicationData == null) {
-      components = (
-         <>
-            <SubmitApplication />
-         </>);
-   } else {
-      components = (
-         <>
-            <ApplicationStatus />
-            <ResubmitApplication />
-            <CancelApplication />
-         </>);
+   console.log(applicationData);
+   if (applicationData) {
+      if (applicationData.data.isSuccessful) {
+         components = (
+            <>
+               <ApplicationStatus applicationData={applicationData} />
+               <CancelApplication />
+            </>
+         );
+      }
    }
 
    return components;
