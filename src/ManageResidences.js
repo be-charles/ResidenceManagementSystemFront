@@ -35,7 +35,7 @@ function ManageResidence() {
         <>
                 <h1> Residence Managment</h1>
                 <div class="dropdown">
-                    <button onClick="myFunction()" className="dropbtn">Choose Residence</button>
+                    <button onclick="myFunction()" class="dropbtn">Choose Residence</button>
                     <div id="myDropdown" class="dropdown-content">
                     <a href="http://localhost:6677/HanovorResince">Hanovor</a>
                     <a href="http://localhost:6677/CityEdgeResidence/">City Edge</a>
@@ -44,8 +44,8 @@ function ManageResidence() {
 
 
                 <div class="dropdown">
-                    <button onClick="myFunction()" className="dropbtn">Manage Residence</button>
-                    <div id="myDropdown" className="dropdown-content">
+                    <button onclick="myFunction()" class="dropbtn">Manage Residence</button>
+                    <div id="myDropdown" class="dropdown-content">
                     <a href="http://localhost:6677/ManageStudents">Students</a>
                     <a href="http://localhost:6677/ManageStaff">Staff</a>
                     </div>
@@ -54,7 +54,7 @@ function ManageResidence() {
             <CardMedia
                 className={classes.media}
                 image="https://educonnect.co.za/wp-content/uploads/2019/02/CPUT_1-2000x1200-1.jpg"
-                
+                title="Belleville Campus"
             />
 
 

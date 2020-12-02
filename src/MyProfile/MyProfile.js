@@ -26,7 +26,7 @@ function ProfileInfo () {
    const [profileData, setProfileData] = useState([]);
    
    const fetchProfiles = () => {
-      axios.get("http://localhost:8080/student/read/123456789", {withCredentials:true})
+      axios.get("http://localhost:8080/student/read/28784612", {withCredentials:true})
       .then(response => {
          console.log(response);
          setProfileData(response.data);
