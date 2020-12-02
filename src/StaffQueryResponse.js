@@ -1,22 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-//import Container from '@material-ui/core/Container';
-import { Button, Container, TextField, Typography, makeStyles, Paper } from '@material-ui/core';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
+import { withStyles } from '@material-ui/core/styles';
+import { Button, Container, TextField, makeStyles, Paper } from '@material-ui/core';
 import { useForm, Controller } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 
 //Create Component
 const useStyles = makeStyles((theme) => ({
-  form: {
-    padding: theme.spacing(4),
-    paddingRight: theme.spacing(7),
+  root: {
+    width: '100%',
   },
-  container: {
-    maxWidth: 650
+  heading: {
+    fontSize: theme.typography.pxToRem(15),
+    fontWeight: theme.typography.fontWeightRegular,
   },
   submit: {},
   paper: {
@@ -28,16 +24,17 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     minHeight: 200,
   },
-  formControl: {
-    margin: theme.spacing(2),
-    minWidth: 250,
-  }
+  button: {
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(2),
+    padding: theme.spacing(2)
+  },
 }));
 
-//Create Component
-const Create = () => {
+function StaffQueryResponse() {
   const history = useHistory();   //We'll use history later to redirect to another page
   const classes = useStyles();    //This variable contains all our css classes
+
   const { register, handleSubmit, control } = useForm();   //Form validation
   const onSubmit = data => {
     axios.post("http://localhost:8080/query/update", data)
@@ -46,72 +43,41 @@ const Create = () => {
         console.log(response);
         //Redirect to another page or do something else here to indicate the request was successful
         //such as creating a diolg box
-        history.push("/");
+        alert("You query response has been captured.");
+        history.push("/staffquery");
       })
       .catch((error) => {
         console.log(error);
       });
   }
-
-  const [query, setQuery] = React.useState('');
-
-  const handleChange = (event) => {
-    setQuery(event.target.value);
-  };
-
-  //Formatted response
   return (
     <>
-      <Container component="main" className={classes.container}>
+      <Container component="main" maxWidth="lg">
         <Paper className={classes.paper} elevation={3}>
-          <h1>Respond to student query</h1>
-          <h2>Please fill in all required fields </h2>
+          <h1>Respond to Query</h1>
+          <h2>Please use this form to respond to queries</h2>
 
           <form className={classes.form} noValidate onSubmit={handleSubmit(onSubmit)}>
-
             <TextField
               inputRef={register}
-              id="studNum"
-              name="studNum"
-              label="Student Number"
+              name="queryId"
+              id="queryId"
+              label="Query ID"
               required
               style={{ margin: 8 }}
               fullWidth
-              placeholder="Enter text here"
+              placeholder="Enter an unprocessed Query ID here"
               multiline
               variant="outlined"
             />
 
-
-            <h2>Nature of Query</h2>
-            <FormControl name="nature" variant="outlined" className={classes.formControl} inputRef={register}>
-              <InputLabel>Select</InputLabel>
-              <Controller name="nature" control={control} as={
-                <Select
-                  required
-                  id="nature"
-                  style={{ margin: 8 }}
-                  fullWidth
-                  value={query}
-                  onChange={handleChange}
-                  label="Select"
-                >
-                  <MenuItem value="">
-                    <em>None</em>
-                  </MenuItem>
-                  <MenuItem value="Complaint">Complaint</MenuItem>
-                  <MenuItem value="Question">Question</MenuItem>
-                  <MenuItem value="Suggestion">Suggestion</MenuItem>
-                </Select>
-              } />
-            </FormControl>
-            <h2>Please Elaborate</h2>
+            <h2>Query Response</h2>
             <TextField
               inputRef={register}
               required
               fullWidth
-              name="description"
-              id="description"
+              name="response"
+              id="response"
               style={{ margin: 8 }}
               placeholder="Enter text here"
               multiline
@@ -128,16 +94,6 @@ const Create = () => {
           </form>
         </Paper>
       </Container>
-    </>
-  );
-};
-
-
-function StaffQueryResponse() {
-  return (
-    <>
-
-      <Create />
     </>
   );
 }
