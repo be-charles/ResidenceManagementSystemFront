@@ -4,6 +4,7 @@ import './index.css';
 import App from './App/App';
 import reportWebVitals from './reportWebVitals';
 import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 axios.defaults.withCredentials = true;
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
