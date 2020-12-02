@@ -77,7 +77,7 @@ const SubmitApplication = () => {
       )
          .then(response => {
             console.log(response)
-
+            window.location.reload(false);
          })
          .catch(error => { console.log(error) });
    }
@@ -182,7 +182,7 @@ const CancelApplication = () => {
       axios.delete(`${apiBaseURL}/cancel`)
          .then(response => {
             console.log(response)
-            //window.location.reload(false);
+            window.location.reload(false);
          })
          .catch(error => { console.log(error) });
    }
