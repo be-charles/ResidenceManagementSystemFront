@@ -8,7 +8,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import './ManagerTable.css';
+import '../ManagerTable.css';
 
 function ManageStaff() {
     const useStyles = makeStyles((theme) => ({
@@ -57,16 +57,30 @@ function ManageStaff() {
 
         <>
             <h1>City Edge Students</h1>
+            
+
+            <div> <button
+                type="button"
+                className="btn btn-primary"
+                style={{ marginRight: 'auto' }}
+                onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = 'http://localhost:6677/add-room';
+                }}
+            > Add Room</button></div>
+        
             <div className="mnanagertable">
-                <table id="table">
+    
+                <table id="table" className="table table-striped">
                     <TableHead>
-                        <TableCell align="left">Employee Number</TableCell>
-                        <TableCell align="right">First Name</TableCell>
-                        <TableCell align="right">Last Name </TableCell>
-                        <TableCell align="right">Employment Date</TableCell>
-                        <TableCell align="right">Residence Name</TableCell>
-                        <TableCell align="right">Access Level</TableCell>
-                
+                        <TableCell>Employee Number</TableCell>
+                        <TableCell>First Name</TableCell>
+                        <TableCell >Last Name </TableCell>
+                        <TableCell>Employment Date</TableCell>
+                        <TableCell >Residence Name</TableCell>
+                        <TableCell >Access Level</TableCell>
+                        <TableCell>Action</TableCell>
+
                     </TableHead>
 
                     <TableBody>
@@ -76,11 +90,16 @@ function ManageStaff() {
                         {ManageStaff.map((manager) => (
                             <TableRow key={manager.residenceId}>
                                 <TableCell align="left">{manager.employeeId}</TableCell>
-                                <TableCell contenteditable="true" align="right">{manager.firstName}</TableCell>
-                                <TableCell contenteditable="true" align="">{manager.lastName}</TableCell>
-                                <TableCell contenteditable="true" align="right">{manager.employmentDate}</TableCell>
-                                <TableCell contenteditable="true" align="right">{manager.residenceName}</TableCell>
-                                <TableCell contenteditable="true" align="right">{manager.accessLevel}</TableCell>
+                                <TableCell >{manager.firstName}</TableCell>
+                                <TableCell >{manager.lastName}</TableCell>
+                                <TableCell >{manager.employmentDate}</TableCell>
+                                <TableCell >{manager.residenceName}</TableCell>
+                                <TableCell >{manager.accessLevel}</TableCell>
+                                <TableCell>
+                                    <button className="btn btn-info">update</button>
+                                    <button style={{ marginLeft: "10px" }} className="btn btn-danger">Delete</button>
+
+                                </TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
