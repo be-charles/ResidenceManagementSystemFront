@@ -82,7 +82,7 @@ function ProfileInfo () {
                         <TableCell>Contact Number</TableCell><TableCell align="left">{profileData.contactNum}</TableCell>
                      </TableRow>
                      <TableRow>
-                        <TableCell>Active Residence</TableCell><TableCell align="left">if({profileData.campusId}==1) {"CPUT"}</TableCell>
+                        <TableCell>Active Residence</TableCell><TableCell align="left">{profileData.residenceName}</TableCell>
                      </TableRow>
                   </TableBody>
                </Table>

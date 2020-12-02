@@ -39,8 +39,9 @@ const studentNavigationLinks = [
 ];
 const staffNavigationLinks = [
     { title: `home`, path: `/` },
-    { title: `StaffQuery`, path: `/StaffQuery` },
-    { title: `students`, path: `/students`},
+    { title: `myProfile`, path: `/myprofilestaff` },
+    { title: `Student Queries`, path: `/StaffQuery` },
+    { title: `Students`, path: `/students`},
     { title: `ResManagement`, path: `/ManageResidences` },
     { title: `logout`, path: `/logout`}
 ];
